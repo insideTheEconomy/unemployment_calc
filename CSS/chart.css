@@ -12,10 +12,10 @@
 	fill: white;
 }
 
-.line {
+svg .line {
   fill: none;
   stroke: steelblue;
-  stroke-width: .5px;
+  stroke-width: 1px;
 
 }
 
@@ -27,4 +27,13 @@ body{
 	background-color: black;
 	color: white;
 }
+
+.d3-slider {
+	background-color: black;
+	height: 1em;
+}
+
+.d3-slider-handle{
+	
+}	
 

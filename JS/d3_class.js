@@ -10,13 +10,16 @@ function unChart(_w , _h ){
 		top: 30,
 		bottom: 30
 	}
+	this.innerWidth = this.w - this.padding.left - this.padding.right;
+	this.innerHeight = this.h - this.padding.top - this.padding.bottom;
+	this.innerTop = this.h - this.padding.top;
 	this.data = {"data":"default"};
 	this.speed = 300;
 	this.dScale = d3.time.scale()
-			.range([this.padding.left, this.w - this.padding.left - this.padding.right])
+			.range([this.padding.left, this.w - this.padding.right])
 
 	this.yScale = d3.scale.linear()
-			.range([this.h - this.padding.top, this.padding.bottom]);
+			.range([this.innerTop, this.padding.bottom]);
 
 	
 
@@ -32,6 +35,14 @@ function unChart(_w , _h ){
 			.orient("left")
 			.ticks(5);
 	this.svg = null;
+	this.sliderX = null;
+	this.container = null;
+	this.slideAxis = d3.svg.axis()
+			  .scale(this.dScale)
+			  .orient("bottom")
+			  .ticks(5);
+			
+	
 }
 
 p = unChart.prototype;
@@ -45,7 +56,8 @@ p.getInfo = function(){
 
 p.build = function( sel ){
 	sel = typeof sel !== 'undefined' ? sel : "body";
-	this.svg = d3.select(sel)
+	this.container = d3.select(sel);
+	this.svg = this.container
 			.append("svg")
 			.attr({
 				"width": this.w,
@@ -63,14 +75,33 @@ p.build = function( sel ){
 		.attr("transform", "translate(" + this.padding.left + ",0)")
 		.call(this.yAxis);
 	this.svg.append("path").attr("class","line");
-				
+	
+
+	
+	this.slide = d3.slider();
+	this.container.append("div")
+		.attr("class", "x axis")
+		.style({
+			width:this.innerWidth, 
+			"margin-left":this.padding.left
+			}).call(this.slide);
+			
+
+	
+
+
+	
+	this.slide.on("slide", function(evt, value) {
+	  console.log(value);
+	})
+	
 }
 
 Object.defineProperty(p, "dataset",{
 	get: function(){return this.data},
 	set: function(ds){
 		this.data = ds;
-		console.log("DATASET RECEIVED");
+		air.trace("DATASET RECEIVED");
 		this.update();
 		}});
 	
@@ -81,22 +112,36 @@ p.update = function(){
 	sv = this.svg;
 	
 	line = d3.svg.line()
-			.x(function(d){return ds(d.jsDate)})
+			.x(function(d){return ds(d.jsDate )})
 			.y(function(d){return ys(d.value)}).interpolate("basis");
 	
 	//update domains
 	
 	ds.domain(d3.extent(this.data, function(d,i){
-		d.jsDate = new Date(d.date);
-		return d.jsDate;
+		//d.jsDate = new new Date(d.date);
+		return d.jsDate ;
 	}))
+	
+	
 	ys.domain([0, d3.max(this.data, function(d) { return d.value; })]);
 	//and axes
-	
+	//Update Slider
+	this.slide = d3.slider().min(0).max(this.data.length);
+	this.container.select(".d3-slider")
+		.remove();
+	this.container.append("div")
+		.attr("class", "x axis")
+		.style({
+			width:this.innerWidth, 
+			"margin-left":this.padding.left
+			}).call(this.slide);
+			this.slide.on("slide", function(e,v){});
+		
 	sv.select(".x.axis")
     	.transition()
     	.duration(this.speed)
 		.call(this.xAxis);
+	
 	
 	//Update Y axis
 	sv.select(".y.axis")
@@ -121,8 +166,9 @@ p.update = function(){
 	circ
 			.transition()
 	    	.duration(this.speed)
+			.delay(function(d, i) { return i / 700 * 800; })
 			.attr("cx", function(d,i) {
-				return ds(d.jsDate);
+				return ds(d.jsDate );
 			})
 			.attr("cy", function(d) {
 				return ys(d.value);
@@ -130,21 +176,7 @@ p.update = function(){
 			.attr("r", function(d) {
 				return 1;
 			});
-			
-	
-/*	this.svg.selectAll("circle")
-			   .data(this.data)
-			   .enter()
-		
-			   .append("circle")
-			   .attr("cx", function(d,i) {
-			   		return this.dScale(d.jsDate);
-			   })
-			   .attr("cy", function(d) {
-			   		return this.yScale(d.value);
-			   })
-			   .attr("r", function(d) {
-			   		return 1;
-			   });*/
 	
 }
+
+

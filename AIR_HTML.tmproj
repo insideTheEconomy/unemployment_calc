@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>HelloWorld.html</string>
+	<string>JS/d3_class.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -19,14 +19,14 @@
 		<dict>
 			<key>filename</key>
 			<string>HelloWorld-app.xml</string>
+			<key>lastUsed</key>
+			<date>2013-11-27T19:34:17Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>HelloWorld.html</string>
 			<key>lastUsed</key>
-			<date>2013-11-25T16:08:49Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2013-11-27T19:34:58Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -60,9 +60,37 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>CSS/d3.slider.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
 				<integer>21</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>HelloWorld-app.xml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>11</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -74,14 +102,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>42</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 		<key>JS/AIRAliases.js</key>
 		<dict>
@@ -97,19 +125,33 @@
 			<key>firstVisibleLine</key>
 			<integer>203</integer>
 		</dict>
-		<key>JS/d3_class.js</key>
+		<key>JS/d3_class-ck.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>JS/d3_class.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>180</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>115</integer>
 		</dict>
 		<key>JS/d3_stuff.js</key>
 		<dict>
@@ -125,14 +167,28 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>JS/data_sample-ck.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>JS/data_sample.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>15</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>15</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -144,9 +200,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>32</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -186,14 +242,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>28</integer>
+				<integer>31</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>6</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>31</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
 		</dict>
 		<key>test.html</key>
 		<dict>
@@ -228,11 +300,15 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>JS/data_sample-ck.js</string>
+		<string>HelloWorld-app.xml</string>
 		<string>HelloWorld.html</string>
+		<string>CSS/d3.slider.css</string>
+		<string>JS/d3_class-ck.js</string>
 		<string>JS/d3_class.js</string>
 		<string>JS/d3_stuff.js</string>
-		<string>JS/functions_dev.js</string>
 		<string>JS/data_sample.js</string>
+		<string>JS/functions_dev.js</string>
 		<string>JS/functions-ck.js</string>
 		<string>JS/db_functions.js</string>
 		<string>JS/functions.js</string>
@@ -243,6 +319,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{88, 77}, {1230, 874}}</string>
+	<string>{{311, -896}, {1230, 896}}</string>
 </dict>
 </plist>

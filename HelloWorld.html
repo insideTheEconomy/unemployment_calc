@@ -5,7 +5,19 @@
 
 
 <link rel="stylesheet" href="CSS/chart.css" />
+<link rel="stylesheet" href="CSS/d3.slider.css" />
 <script src="JS/jquery-1.9.1.js"></script>
+<script>
+ var u;
+  $( document ).ready(function() {
+    
+	u = new unChart(1024,500); 
+	u.build("body"); 
+	buildSampleData();
+	u.dataset = obs_def;
+  });
+ 
+</script>
 <script src="JS/jquery-ui.js"></script>
 
 <script type="text/javascript" src="JS/AIRAliases.js"></script>
@@ -13,6 +25,7 @@
 <script type="text/javascript" src = "JS/functions_dev.js"></script>
 <script type="text/javascript" src = "JS/functions.js"></script>
 <script type="text/javascript" src="JS/d3.v3.js"></script>
+<script src="JS/d3.slider.js"></script>
 <script type="text/javascript" src = "JS/d3_class.js"></script>
 </head> 
 
@@ -29,9 +42,9 @@
 </body> 
 
 <script>
-	var u = new unChart(1024,500); 
-	u.build("body"); 
-	u.dataset = obs_json;
+	
+	
+
 
 
 	var OBS;
