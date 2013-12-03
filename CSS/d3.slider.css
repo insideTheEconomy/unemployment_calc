@@ -1,41 +1,96 @@
 .d3-slider {
-    position: relative;
-    font-family: Verdana,Arial,sans-serif;
-    font-size: 1.1em;
-    border: 1px solid #aaaaaa;
-    z-index: 2;
+  position: absolute;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 1.1em;
+  z-index: 2;
+  margin-top: -34px;
 }
-
 .d3-slider-horizontal {
-    height: .8em;
-}  
-
-.d3-slider-vertical {
-    width: .8em;
-    height: 100px;
-}      
-
+  height: 0;
+}
 .d3-slider-handle {
-    position: absolute;
-    width: 1.2em;
-    height: 1.2em;
-    border: 1px solid #d3d3d3;
-    border-radius: 4px;
-    background: #eee;
-    background: linear-gradient(to bottom, #eee 0%, #ddd 100%);
-    z-index: 3;
+  box-sizing: border-box;
+  position: absolute;
+  width: 24;
+  height: 18;
+  background: none;
+  z-index: 3;
 }
-
-.d3-slider-handle:hover {
-    border: 1px solid #999999;
-}
-
 .d3-slider-horizontal .d3-slider-handle {
-    top: -.3em;
-    margin-left: -.6em;
+  top: -8px;
+  margin-left: -12;
 }
-
-.d3-slider-axis {
+.d3-slider-handle:after {
+  box-sizing: border-box;
+  content: " ";
+  width: 1px;
+  position: absolute;
+  left: 12.5px;
+  top: -650;
+  height: 660;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px white,0px 0px 20px white,0px 0px 30px white;
+}
+.pipe {
+  box-sizing: border-box;
+  content: " ";
+  width: 1px;
+  position: absolute;
+  left: 12.5px;
+  top: -650;
+  height: 660;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px white,0px 0px 20px white,0px 0px 30px white;
+}
+.arrow {
+  display: inline-block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+.arrow.right {
+  left: 15px;
+  top: 2px;
+  width: 0;
+  height: 0;
+  border-top: 10 solid transparent;
+  border-bottom: 10 solid transparent;
+  border-left: 24 solid #181e77;
+}
+.arrow.left {
+  left: -13;
+  top: 2px;
+  width: 0;
+  height: 0;
+  border-top: 10 solid transparent;
+  border-bottom: 10 solid transparent;
+  border-right: 24 solid #181e77;
+}
+.arrow.left:after {
+  position: absolute;
+  top: -12;
+  left: -2;
+  z-index: -1;
+  content: " ";
+  width: 0;
+  height: 0;
+  border-top: 12 solid transparent;
+  border-bottom: 12 solid transparent;
+  border-right: 28 solid rgba(255, 255, 255, 0.6);
+}
+.arrow.right:after {
+  position: absolute;
+  top: -12;
+  left: -26;
+  z-index: -1;
+  content: " ";
+  width: 0;
+  height: 0;
+  border-top: 12 solid transparent;
+  border-bottom: 12 solid transparent;
+  border-left: 28 solid rgba(255, 255, 255, 0.6);
+}
+/*.d3-slider-axis {
     position: relative;
     z-index: 1;    
 }
@@ -67,4 +122,4 @@
     left: -.25em;
     margin-left: 0;
     margin-bottom: -.6em;      
-}
+} */

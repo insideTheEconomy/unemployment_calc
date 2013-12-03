@@ -4,8 +4,22 @@
 	<title>D3: </title>
 
 
+
+<link rel="stylesheet" href="CSS/d3.slider.css" />
 <link rel="stylesheet" href="CSS/chart.css" />
 <script src="JS/jquery-1.9.1.js"></script>
+<script>
+ var u;
+  $( document ).ready(function() {
+    
+	u = new unChart(960,720); 
+	u.build("#d3"); 
+	buildSampleData();
+	u.baseline = sample_data[0];
+	u.dataset = sample_data[0];
+  });
+ 
+</script>
 <script src="JS/jquery-ui.js"></script>
 
 <script type="text/javascript" src="JS/AIRAliases.js"></script>
@@ -13,10 +27,14 @@
 <script type="text/javascript" src = "JS/functions_dev.js"></script>
 <script type="text/javascript" src = "JS/functions.js"></script>
 <script type="text/javascript" src="JS/d3.v3.js"></script>
+<script src="JS/d3.slider.js"></script>
 <script type="text/javascript" src = "JS/d3_class.js"></script>
 </head> 
 
 <body> 
+	<h3 class = "base label">National Average:</h3><h2 class="base datum">2</h2><br />
+	<h3 class="current label">Current Average:</h3><h2 class="current datum">3</h2>
+	<div id="d3"></div>
     <form>
 	  <div id="radio">
 		<input g_id="0" type="radio" id="radio1" name="radio" /><label for="radio1">None</label>
@@ -29,15 +47,17 @@
 </body> 
 
 <script>
-	var u = new unChart(1024,500); 
-	u.build("body"); 
-	u.dataset = obs_json;
+	
+	
 
 
-	var OBS;
+	var EV;
+	var OBS;//current observationS - according to filters
+	var OB; //current observation - according to slider position
+	var B;  //baseline observation  -   ""     ""
 	$(document).on("FRED", function(e){
-		air.trace("update: "+e.time);
-		OBS = e.json;
+		OBS = e.observations; 
+	
 		var h = "<h1>DATA:</h1>";
 		u.dataset = OBS;
 	/*	$.each(OBS,function(i,v){
@@ -45,6 +65,14 @@
 				h+=line;
 			})
 			$("#result").html(h);*/
+		});
+	$(document).on("SLIDER", function(e){
+		EV = e;
+		OB = e.observation;
+		B = e.base;
+		$(".current.datum").text(OB.value);
+		$(".base.datum").text(B.value);
+
 		});
 	var db = new DBConnector();
 	db.open();

@@ -1,39 +1,57 @@
 .axis path,
 .axis line {
-	fill: none;
-	stroke: black;
-	shape-rendering: crispEdges;
-	stroke: white;
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+  stroke: white;
 }
-
 .axis text {
-	font-family: sans-serif;
-	font-size: 11px;
-	fill: white;
+  font-family: sans-serif;
+  font-size: 11px;
+  fill: white;
 }
-
 svg .line {
   fill: none;
-  stroke: steelblue;
   stroke-width: 1px;
-
+  stroke: white;
 }
-
-circle{
-	fill:blue;
-	stroke:grey;
+svg .line.male {
+  stroke: #94d3e2;
 }
-body{
-	background-color: black;
-	color: white;
+svg .line.female {
+  stroke: #f64858;
 }
-
-.d3-slider {
-	background-color: black;
-	height: 1em;
+svg .line.base {
+  stroke: #e7ab22;
 }
-
-.d3-slider-handle{
-	
-}	
-
+circle {
+  fill: #94d3e2;
+  stroke: grey;
+}
+body {
+  background-image: url(../IMG/bg.jpg);
+  color: white;
+}
+* {
+  font-size: 18pt;
+}
+h2.datum {
+  margin-left: .33em;
+  font-size: 3em;
+  display: inline;
+}
+h2.datum.base {
+  color: #e7ab22;
+}
+h2.datum.current {
+  color: #f64858;
+}
+h3.label {
+  font-size: 1.5em;
+  display: inline;
+}
+#d3 {
+  height: 720;
+  width: 960;
+  background-color: rgba(0, 0, 0, 0.5);
+}

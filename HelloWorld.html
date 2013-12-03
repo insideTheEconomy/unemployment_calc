@@ -4,15 +4,16 @@
 	<title>D3: </title>
 
 
-<link rel="stylesheet" href="CSS/chart.css" />
+
 <link rel="stylesheet" href="CSS/d3.slider.css" />
+<link rel="stylesheet" href="CSS/chart.css" />
 <script src="JS/jquery-1.9.1.js"></script>
 <script>
  var u;
   $( document ).ready(function() {
     
 	u = new unChart(1024,500); 
-	u.build("body"); 
+	u.build("#d3"); 
 	buildSampleData();
 	u.dataset = obs_def;
   });
@@ -30,6 +31,9 @@
 </head> 
 
 <body> 
+	<h3>National Average:</h3><h2 class="national datum"></h2>
+	<h3 class="current">Current Average:</h3><h2 class="current datum"></h2>
+	<div id="d3"></div>
     <form>
 	  <div id="radio">
 		<input g_id="0" type="radio" id="radio1" name="radio" /><label for="radio1">None</label>

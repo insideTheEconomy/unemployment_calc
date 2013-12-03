@@ -13,8 +13,9 @@ function unChart(_w , _h ){
 	this.innerWidth = this.w - this.padding.left - this.padding.right;
 	this.innerHeight = this.h - this.padding.top - this.padding.bottom;
 	this.innerTop = this.h - this.padding.top;
-	this.data = {"data":"default"};
+	this.data = this.base = {"data":"default"};
 	this.speed = 300;
+	this.sliderValue = 0;
 	this.dScale = d3.time.scale()
 			.range([this.padding.left, this.w - this.padding.right])
 
@@ -41,17 +42,10 @@ function unChart(_w , _h ){
 			  .scale(this.dScale)
 			  .orient("bottom")
 			  .ticks(5);
-			
-	
+
 }
 
 p = unChart.prototype;
-
-p.getInfo = function(){
-	return this.w+" , "+this.h+ " : "+this.padding.left;
-}
-
-
 		
 
 p.build = function( sel ){
@@ -74,29 +68,12 @@ p.build = function( sel ){
 		.attr("class", "y axis")
 		.attr("transform", "translate(" + this.padding.left + ",0)")
 		.call(this.yAxis);
-	this.svg.append("path").attr("class","line");
-	
+		
+	this.svg.append("path").attr("class"," line base");
+	this.svg.append("path").attr("class"," line current");
 
-	
-	this.slide = d3.slider();
-	this.container.append("div")
-		.attr("class", "x axis")
-		.style({
-			width:this.innerWidth, 
-			"margin-left":this.padding.left
-			}).call(this.slide);
-			
-
-	
-
-
-	
-	this.slide.on("slide", function(evt, value) {
-	  console.log(value);
-	})
-	
 }
-
+//define setter functions
 Object.defineProperty(p, "dataset",{
 	get: function(){return this.data},
 	set: function(ds){
@@ -104,60 +81,36 @@ Object.defineProperty(p, "dataset",{
 		air.trace("DATASET RECEIVED");
 		this.update();
 		}});
+		
+Object.defineProperty(p, "baseline",{
+	get: function(){return this.base},
+	set: function(bl){
+		this.base = bl;
+		air.trace("DATASET RECEIVED");
+		this.drawBase();
+		}});
 	
 p.update = function(){
 	
-	ds = this.dScale;
 	ys = this.yScale;
 	sv = this.svg;
-	
-	line = d3.svg.line()
-			.x(function(d){return ds(d.jsDate )})
-			.y(function(d){return ys(d.value)}).interpolate("basis");
-	
-	//update domains
-	
-	ds.domain(d3.extent(this.data, function(d,i){
-		//d.jsDate = new new Date(d.date);
-		return d.jsDate ;
-	}))
-	
-	
+
 	ys.domain([0, d3.max(this.data, function(d) { return d.value; })]);
-	//and axes
-	//Update Slider
-	this.slide = d3.slider().min(0).max(this.data.length);
-	this.container.select(".d3-slider")
-		.remove();
-	this.container.append("div")
-		.attr("class", "x axis")
-		.style({
-			width:this.innerWidth, 
-			"margin-left":this.padding.left
-			}).call(this.slide);
-			this.slide.on("slide", function(e,v){});
-		
-	sv.select(".x.axis")
-    	.transition()
-    	.duration(this.speed)
-		.call(this.xAxis);
-	
-	
-	//Update Y axis
-	sv.select(".y.axis")
-    	.transition()
-    	.duration(this.speed)
-		.call(this.yAxis);
-	
+
 	//finally, lines and dots!
-	sv.select(".line")
+	sv.select(".line.current")
 				.datum(this.data)
 				.transition()
 		    	.duration(this.speed)
-				.attr("class","line")
-				.attr("d", line);
-
-	var circ = sv.selectAll("circle")
+			//	.attr("class","line current")
+				.attr("d", this.line);
+				
+	$.event.trigger({
+				type: "SLIDER",
+				observation: this.data[this.sliderValue],
+				base: this.base[this.sliderValue]
+			}); 
+/*	var circ = sv.selectAll("circle")
 				.data(this.data);
 	circ
 				.enter()
@@ -175,8 +128,118 @@ p.update = function(){
 			})
 			.attr("r", function(d) {
 				return 1;
-			});
+			});*/
 	
-}
+};
+
+p.drawBase = function(){
+	console.log("drawing Baseline");
+	ds = this.dScale;
+	ys = this.yScale;
+	sv = this.svg;
+	
+	this.line = d3.svg.line()
+			.x(function(d){return ds(d.jsDate )})
+			.y(function(d){return ys(d.value)}).interpolate("linear");
+	
+	//update domains
+	
+	ds.domain(d3.extent(this.base, function(d,i){
+		//d.jsDate = new new Date(d.date);
+		return d.jsDate ;
+	}))
+	
+	
+	ys.domain([0, d3.max(this.base, function(d) { return d.value; })]);
+	
+	//setup axes
+	//  X axis
+	sv.select(".x.axis")
+    	.transition()
+    	.duration(this.speed)
+		.call(this.xAxis);
+	
+	
+	//Y axis
+	sv.select(".y.axis")
+    	.transition()
+    	.duration(this.speed)
+		.call(this.yAxis);
+	
+	//Update Slider
+	console.log("Current Position : " + this.sliderValue);
+	this.slide = d3.slider().min(0).max(this.base.length-1);
+	this.container.select(".d3-slider")
+		.remove();
+		
+	var self = this;
+	
+	var sliderHandler = function(e, v){
+		
+		self.sliderValue = v;
+		$.event.trigger({
+					type: "SLIDER",
+					observation: self.data[v],
+					base: self.base[v]
+				});
+	}
+	
+	this.container.append("div")
+		.attr("class", "x axis slider")
+		.style({
+			width:this.innerWidth, 
+			"margin-left":this.padding.left-1
+			}).call(this.slide.value(this.sliderValue));
+			this.slide.on("slide", sliderHandler);
+	var handle = this.container.select(".d3-slider-handle")
+	
+	handle.append("div").attr("class","arrow left");
+	handle.append("div").attr("class","arrow right");
+	
+	
+	
+	//and axes, X axis
+	sv.select(".x.axis")
+    	.transition()
+    	.duration(this.speed)
+		.call(this.xAxis);
+	
+	
+	//Update Y axis
+	sv.select(".y.axis")
+    	.transition()
+    	.duration(this.speed)
+		.call(this.yAxis);
+	
+	//finally, lines and dots!
+	sv.select(".line")
+				.datum(this.base)
+				.transition()
+		    	.duration(this.speed)
+				.attr("class","line base")
+				.attr("d", this.line);
+
+/*	var circ = sv.selectAll("circle")
+				.data(this.base);
+	circ
+				.enter()
+				.append("circle")
+				
+	circ
+			.transition()
+	    	.duration(this.speed)
+			.delay(function(d, i) { return i / 700 * 800; })
+			.attr("cx", function(d,i) {
+				return ds(d.jsDate );
+			})
+			.attr("cy", function(d) {
+				return ys(d.value);
+			})
+			.attr("r", function(d) {
+				return 1;
+			});*/
+	
+};
+
 
 

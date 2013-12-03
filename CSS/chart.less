@@ -1,0 +1,62 @@
+@import "color.less";  
+
+//SVG Styling
+.axis path,
+.axis line {
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+	stroke: white;
+}
+
+.axis text {
+	font-family: sans-serif;
+	font-size: 11px;
+	fill: white;
+}
+
+svg .line {
+  fill: none;
+  
+  stroke-width: 1px;
+	stroke: white;
+	&.male{stroke: @lightblue}
+	&.female{stroke: @pink;}
+	&.base{stroke: @yellow;}
+
+}
+
+circle{
+	fill:@lightblue;
+	stroke:grey;
+}
+body{
+	background-image: url(../IMG/bg.jpg);
+	color: white;
+}
+
+//TEXT
+*{font-size:18pt;}
+
+h2{
+	&.datum{
+		margin-left:.33em;
+		&.base{color: @yellow;}
+		&.current{color: @pink;}
+		font-size:3em;
+		display:inline;
+	}
+}
+h3{
+	&.label{
+		font-size:1.5em;
+		display: inline;
+	}
+}
+
+//divs
+#d3{
+	height:720;
+	width: 960;
+	background-color: fade(black,50%);
+}

@@ -21,7 +21,7 @@ DBConnector.prototype.queryByIds = function( ids ){
 	
 	$.event.trigger({
 				type: "FRED",
-				json: sample_data[ids["g"]],
-				time: new Date()
+				observations: sample_data[ids["g"]],
+				title: "Series Title Goes Here"
 			});
 };

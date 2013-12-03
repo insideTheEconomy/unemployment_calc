@@ -1,13 +1,14 @@
-	air.trace("Functions Loaded")
+	console.log("Functions Loaded")
 
 	function DBConnector () {
 
 	}
-
-	DBConnector.prototype.statement = new air.SQLStatement();
-	DBConnector.prototype.conn = new air.SQLConnection();
-	DBConnector.dbname = "test.db";
-	DBConnector.prototype.resHandler = function(e){
+	dbp = DBConnector.prototype;
+//	dbp.statement = new air.SQLStatement();
+//	dbp.conn = new air.SQLConnection();
+	dbp.dbname = "test.db";
+	dbp.db;
+	/*dbp.resHandler = function(e){
 		//this.statement.removeEventListener(air.SQLEvent.RESULT, this.resHandler);
 		var data = e.target.getResult().data[0];
 		air.trace(data["observations"])
@@ -17,9 +18,40 @@
 					json: obs,
 					time: new Date()
 				});
+	}*/
+	
+	DBConnector.prototype.open = function(){
+	//	this.statement.sqlConnection = this.conn;
+		this.openHandler = function(e){
+			console.log("openHandler");
+		
+		}
+		this.folder = Ti.Filesystem.getResourcesDirectory();
+		this.dbFile = this.folder.resolve(this.dbname);
+		this.db = Ti.Database.openFile(this.dbFile);
+		
+		/*this.statement = new air.SQLStatement();
+		this.conn = new air.SQLConnection();
+		this.statement.sqlConnection = this.conn;*/
+	//	this.conn.addEventListener(air.SQLEvent.OPEN,  this.openHandler, false);
+	//	this.conn.openAsync(dbFile);
 	}
+	
+	
 	DBConnector.prototype.queryByIds = function(ids){
-		this.statement.clearParameters();
+		var q = "SELECT * FROM ser_data WHERE ser_data.ser_id = (SELECT series_id FROM ser_id WHERE g_id LIKE "+ids.g+" AND ed_id  LIKE "+ids.ed+" AND ar_id LIKE "+ids.ar+")"
+		rows = this.db.execute(q);
+		var obs = JSON.parse(rows.fieldByName("observations"));
+		var ser = JSON.parse(rows.fieldByName("series"));
+		var ser_title = ser.seriess[0].title;
+		var resp = {};
+		$.event.trigger({
+					type: "FRED",
+					observations: obs,
+					title: ser_title
+				});
+		
+	/*	this.statement.clearParameters();
 		this.errHandler = function(e){
 			air.trace("Error message:", event.error.message); 
 			air.trace("Details:", event.error.details);
@@ -35,22 +67,8 @@
 		//air.trace(q);
 		this.statement.addEventListener(air.SQLEvent.RESULT, this.resHandler, false);
 		this.statement.addEventListener(air.SQLErrorEvent.ERROR, this.errHandler, false);
-		this.statement.execute();
+		this.statement.execute(); */
 	}
 
-	DBConnector.prototype.open = function(){
-		this.statement.sqlConnection = this.conn;
-		this.openHandler = function(e){
-			air.trace("openHandler");
-		
-		}
-		var folder = air.File.applicationDirectory;
-		var dbFile = folder.resolvePath("test.db");
-		/*this.statement = new air.SQLStatement();
-		this.conn = new air.SQLConnection();
-		this.statement.sqlConnection = this.conn;*/
-		this.conn.addEventListener(air.SQLEvent.OPEN,  this.openHandler, false);
-		this.conn.openAsync(dbFile);
-	}
-
+	
 
