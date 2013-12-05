@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>JS/d3_class.js</string>
+	<string>index.html</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -54,7 +54,7 @@
 			<key>filename</key>
 			<string>index.html</string>
 			<key>lastUsed</key>
-			<date>2013-12-04T16:49:16Z</date>
+			<date>2013-12-05T17:38:23Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -300,30 +300,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>21</integer>
+				<integer>24</integer>
 				<key>line</key>
-				<integer>50</integer>
+				<integer>8</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>50</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>21</integer>
-				<key>line</key>
-				<integer>50</integer>
-			</dict>
+			<integer>23</integer>
 		</dict>
 		<key>JS/functions-ck.js</key>
 		<dict>
@@ -418,29 +402,29 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>42</integer>
+				<integer>77</integer>
 				<key>line</key>
-				<integer>101</integer>
+				<integer>27</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>72</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>38</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>101</integer>
+				<integer>0</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>101</integer>
+				<integer>107</integer>
 			</dict>
 		</dict>
 		<key>test.db</key>

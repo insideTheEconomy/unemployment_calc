@@ -42,13 +42,19 @@
 		var q = "SELECT * FROM ser_data WHERE ser_data.ser_id = (SELECT series_id FROM ser_id WHERE g_id LIKE "+ids.g+" AND ed_id  LIKE "+ids.ed+" AND ar_id LIKE "+ids.ar+")"
 		rows = this.db.execute(q);
 		var obs = JSON.parse(rows.fieldByName("observations"));
-		var ser = JSON.parse(rows.fieldByName("series"));
-		var ser_title = ser.seriess[0].title;
-		var resp = {};
+//		var ser = JSON.parse(rows.fieldByName("series"));
+//		var ser_title = ser.seriess[0].title;
+		
+		$.each(obs,function(i,v){
+				str = v.date;
+				a = str.split("-");
+				var _d = new Date(a[0],a[1],a[2]);
+				v.jsDate = _d;
+			});
 		$.event.trigger({
 					type: "FRED",
 					observations: obs,
-					title: ser_title
+//title: ser_title
 				});
 		
 	/*	this.statement.clearParameters();

@@ -93,7 +93,7 @@ Object.defineProperty(p, "dataset",{
 	get: function(){return this.data},
 	set: function(ds){
 		this.data = ds;
-		air.trace("DATASET RECEIVED");
+		console.log("DATASET RECEIVED");
 		this.update();
 		}});
 		
@@ -101,7 +101,7 @@ Object.defineProperty(p, "baseline",{
 	get: function(){return this.base},
 	set: function(bl){
 		this.base = bl;
-		air.trace("DATASET RECEIVED");
+		console.log("DATASET RECEIVED");
 		this.drawBase();
 		}});
 	
@@ -130,6 +130,7 @@ p.update = function(){
 				observation: this.data[this.sliderValue],
 				base: this.base[this.sliderValue]
 			}); 
+	this.drawBase();
 /*	var circ = sv.selectAll("circle")
 				.data(this.data);
 	circ
@@ -170,7 +171,9 @@ p.drawBase = function(){
 	ys.domain( d3.extent(this.base, function(d) { return parseFloat(d.value)}))
 	this.line = d3.svg.line()
 			.x(function(d){return ds(d.jsDate )})
-			.y(function(d){return ys(d.value)}).interpolate("cardinal");
+			.y(function(d){return ys(d.value)}).interpolate("cardinal")
+			;
+			this.line.defined(function(d) { return !isNaN(d.value); });;
 	
 	
 	//setup axes
