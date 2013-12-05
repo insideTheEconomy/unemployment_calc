@@ -1,11 +1,19 @@
+/*
+unChart constructor takes two constructor arguments, the width and height of the chart.
+.build( selector ) must be called with a selector for the parent element.
+finally, set the baseline property to define the chart ranges/domains and draw the baseline;
+setting the dataset property will update the chart and draw the new data.
+
+*/
+
+
 function unChart(_w , _h ){
-//	this.w = typeof _w !== 'undefined' ? _w : 1024;
-//	this.h = typeof _h !== 'undefined' ? _h : 768;
+
 	this.w = _w;
 	this.h = _h;
 
 	this.padding = {
-		left: 30,
+		left: 60,
 		right: 30,
 		top: 30,
 		bottom: 30
@@ -34,7 +42,8 @@ function unChart(_w , _h ){
 	this.yAxis = d3.svg.axis()
 			.scale(this.yScale)
 			.orient("left")
-			.ticks(5);
+			.ticks(5).tickFormat(function(t){return t+"%"})
+			
 	this.svg = null;
 	this.sliderX = null;
 	this.container = null;
@@ -42,6 +51,10 @@ function unChart(_w , _h ){
 			  .scale(this.dScale)
 			  .orient("bottom")
 			  .ticks(5);
+	
+	
+	
+
 
 }
 
@@ -69,8 +82,10 @@ p.build = function( sel ){
 		.attr("transform", "translate(" + this.padding.left + ",0)")
 		.call(this.yAxis);
 		
+	this.svg.append("path").attr("class"," line current");	
+	this.svg.append("path").attr("class"," line moving");	
 	this.svg.append("path").attr("class"," line base");
-	this.svg.append("path").attr("class"," line current");
+	
 
 }
 //define setter functions
@@ -95,8 +110,13 @@ p.update = function(){
 	ys = this.yScale;
 	sv = this.svg;
 
-	ys.domain([0, d3.max(this.data, function(d) { return d.value; })]);
-
+//	ys.domain([0, d3.max(this.data, function(d) { return parseFloat(d.value); })]);
+	ys.domain( d3.extent(this.data, function(d) { return parseFloat(d.value)}))
+	sv.select(".y.axis")
+    	.transition()
+    	.duration(this.speed)
+		.call(this.yAxis);
+		
 	//finally, lines and dots!
 	sv.select(".line.current")
 				.datum(this.data)
@@ -138,9 +158,6 @@ p.drawBase = function(){
 	ys = this.yScale;
 	sv = this.svg;
 	
-	this.line = d3.svg.line()
-			.x(function(d){return ds(d.jsDate )})
-			.y(function(d){return ys(d.value)}).interpolate("linear");
 	
 	//update domains
 	
@@ -150,7 +167,11 @@ p.drawBase = function(){
 	}))
 	
 	
-	ys.domain([0, d3.max(this.base, function(d) { return d.value; })]);
+	ys.domain( d3.extent(this.base, function(d) { return parseFloat(d.value)}))
+	this.line = d3.svg.line()
+			.x(function(d){return ds(d.jsDate )})
+			.y(function(d){return ys(d.value)}).interpolate("cardinal");
+	
 	
 	//setup axes
 	//  X axis
@@ -196,7 +217,15 @@ p.drawBase = function(){
 	handle.append("div").attr("class","arrow left");
 	handle.append("div").attr("class","arrow right");
 	
-	
+	//add label
+	sv.append("text")
+	    .attr("class", "y label")
+	    .attr("text-anchor", "end")
+	    .attr("y", 6)
+		.attr("x", -this.h/3)
+	    .attr("dy", ".75em")
+	   .attr("transform", "rotate(-90)")
+	    .text("(Percent)");
 	
 	//and axes, X axis
 	sv.select(".x.axis")
@@ -212,14 +241,21 @@ p.drawBase = function(){
 		.call(this.yAxis);
 	
 	//finally, lines and dots!
-	sv.select(".line")
+	sv.select(".line.base")
 				.datum(this.base)
 				.transition()
 		    	.duration(this.speed)
-				.attr("class","line base")
 				.attr("d", this.line);
 
-/*	var circ = sv.selectAll("circle")
+	sv.select(".line.moving")
+				.datum(this.base)
+				.transition()
+		    	.duration(this.speed)
+				.attr("d", this.line2);
+				
+
+
+	var circ = sv.selectAll("circle")
 				.data(this.base);
 	circ
 				.enter()
@@ -237,7 +273,7 @@ p.drawBase = function(){
 			})
 			.attr("r", function(d) {
 				return 1;
-			});*/
+			});
 	
 };
 

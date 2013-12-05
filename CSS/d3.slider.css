@@ -55,7 +55,7 @@
   height: 0;
   border-top: 10 solid transparent;
   border-bottom: 10 solid transparent;
-  border-left: 24 solid #181e77;
+  border-left: 24 solid #202e8f;
 }
 .arrow.left {
   left: -13;
@@ -64,7 +64,7 @@
   height: 0;
   border-top: 10 solid transparent;
   border-bottom: 10 solid transparent;
-  border-right: 24 solid #181e77;
+  border-right: 24 solid #202e8f;
 }
 .arrow.left:after {
   position: absolute;

@@ -5,18 +5,18 @@
 	<link rel="stylesheet" href="CSS/jquery-ui-custom.css">
 	<script src="JS/jquery-1.9.1.js"></script>
 	<script src="JS/jquery-ui-custom.js"></script>
+	<script src="JS/buttons.js"></script>
 	<link rel="stylesheet" href="CSS/style.css">
-	<script>
-	$(function() {
-		$( "#gender" ).buttonset();
-		$( "#education" ).buttonset();
-		$( "#age" ).buttonset();
-	});
-	</script>
+
 	
 	<style>span{pointer-events:none}</style>
 </head>
 <body background="IMG/bg.jpg">
+	
+<!-- 
+buttonsets is the wrapper div, each form needs to have a category corresponding with the key in the id object (queryButtons.ids)
+the input radio tags and labels are set up as jquery ui expects, only the _id is added, this corresponds to the correct id for the category in the div id
+-->
 <div id = "buttonsets">
 	<form>
 		<div id="gender"  category = "g" >
@@ -40,59 +40,10 @@
 		</div>
 	</form>
 </div>
-
 <script>
-var ev;
-var radioChecked = false;
-var $tRadio;
-var $tDiv;
-
-	var ids = {g:0,ed:0,ar:0}
-	$btns = $("#buttonsets")
-	
-	
-	var isChecked = function(e){
-		ev = e;
-		$lab = $(e.target);
-		var lab_sel = $lab.attr("for");
-		$tRadio = $("[id="+lab_sel+"]");
-		$tDiv = $tRadio.parent();
-		radioChecked = $("[id="+lab_sel+"]").prop('checked');
-	}
-	
-	var buildObj = function(e){
-		var b = $(e.target).is("input");
-		if (b){
-			var val;
-			var cat = $(e.target).parent().attr("category");
-			if (radioChecked) {
-		        $tRadio.prop('checked', false);
-				$tDiv.buttonset("refresh");
-				val =  0;
-		    }else{
-				val =  $(e.target).attr("_id");
-			}
-			ids[cat] = val;
-			$.event.trigger({
-						type: "BUTTON",
-						ids: ids,
-					});
-			console.log(ids);
-		}		
-	}
-	
-	$("label").bind({
-		"mousedown" : isChecked,
-	
-	});
-	
-	$("#buttonsets").bind({"click":buildObj});
-	
-
-
-
-
+	var btns = new unButtons();  //create instance of class
+	btns.build("#buttonsets"); //initialize with a selector for the wrapper div
+	$(document).on("BUTTON", function(e){console.log(e.ids)})  //add an event listener, fired each time a button is clicked.
 </script>
-
 </body>
 </html>

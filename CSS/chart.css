@@ -5,10 +5,15 @@
   shape-rendering: crispEdges;
   stroke: white;
 }
-.axis text {
+svg text {
   font-family: sans-serif;
-  font-size: 11px;
   fill: white;
+}
+.axis text {
+  font-size: 11px;
+}
+.axis text:after {
+  content: "%";
 }
 svg .line {
   fill: none;
@@ -44,6 +49,12 @@ h2.datum.base {
   color: #e7ab22;
 }
 h2.datum.current {
+  color: white;
+}
+h2.datum.male {
+  color: #94d3e2;
+}
+h2.datum.female {
   color: #f64858;
 }
 h3.label {
@@ -53,5 +64,5 @@ h3.label {
 #d3 {
   height: 720;
   width: 960;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
