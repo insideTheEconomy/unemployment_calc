@@ -1,3 +1,4 @@
+/* @pink:  #C5299B*/
 .axis path,
 .axis line {
   fill: none;
@@ -17,27 +18,25 @@ svg text {
 }
 svg .line {
   fill: none;
-  stroke-width: 1px;
+  stroke-width: 3px;
   stroke: white;
 }
 svg .line.male {
-  stroke: #94d3e2;
+  stroke: #a4dbe8;
 }
 svg .line.female {
-  stroke: #f64858;
+  stroke: #ad1aac;
 }
 svg .line.base {
-  stroke: #e7ab22;
+  stroke: #ffb81c;
 }
 circle {
-  fill: #94d3e2;
+  fill: #a4dbe8;
   stroke: grey;
 }
 body {
   background-image: url(../IMG/bg.jpg);
   color: white;
-}
-* {
 }
 h2.datum {
   margin-left: .33em;
@@ -45,23 +44,23 @@ h2.datum {
   display: inline;
 }
 h2.datum.base {
-  color: #e7ab22;
+  color: #ffb81c;
 }
 h2.datum.current {
   color: white;
 }
 h2.datum.male {
-  color: #94d3e2;
+  color: #a4dbe8;
 }
 h2.datum.female {
-  color: #f64858;
+  color: #ad1aac;
 }
 h3.label {
   font-size: 1.5em;
   display: inline;
 }
 #d3 {
-  height: 425px;
-  width: 1024px;
-  background-color: rgba(0, 0, 0, 0.3);
+  height: 720;
+  width: 960;
+  background-color: rgba(0, 0, 0, 0.7);
 }

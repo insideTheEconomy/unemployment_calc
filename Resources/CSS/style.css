@@ -32,7 +32,7 @@ html, body
 	height: 768px;
 	background-color:black;
 	background-repeat:no-repeat;
-	background-image:url("../IMAGES/UnemploymentBG3.png");
+	background-image:url("../IMAGES/UnemploymentBG.jpg");
 	overflow:hidden;
 }
 
@@ -192,10 +192,13 @@ html, body
 	font-family: "label";
 	color:white;
 	margin-left:33px;
-	margin-top:5px;
+	margin-top:-285px;
 	text-shadow: 3px 3px 2px #4d4d4d;
+	pointer-events:none;
 }
 .LabelBot {
+	position:absolute;
+	pointer-events:none;
 	height:50%;
 	width:75px;
 	text-align:left;
@@ -204,14 +207,17 @@ html, body
 	color:white;
 	text-shadow: 3px 3px 2px #4d4d4d;
 	float:left;
+	top:-200px;
+	left:30px;
 	
 }
 .LabelBot.Edu {
-	padding-top:25px;
-	margin-left:-134px;
+	top:625px;
+	left:43px;
 }
 .LabelBot.Age {
-	margin-top:-18px;
+	top:690px;
+	left:175px;
 }
 .Percent {
 	float:right;
