@@ -38,7 +38,6 @@ body {
   color: white;
 }
 * {
-  font-size: 18pt;
 }
 h2.datum {
   margin-left: .33em;
@@ -62,7 +61,7 @@ h3.label {
   display: inline;
 }
 #d3 {
-  height: 720;
-  width: 960;
-  background-color: rgba(0, 0, 0, 0.7);
+  height: 425px;
+  width: 1024px;
+  background-color: rgba(0, 0, 0, 0.3);
 }

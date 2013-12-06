@@ -1,0 +1,125 @@
+.d3-slider {
+  position: absolute;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 1.1em;
+  z-index: 2;
+  margin-top: -34px;
+}
+.d3-slider-horizontal {
+  height: 0px;
+}
+.d3-slider-handle {
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 18px;
+  background: none;
+  z-index: 3;
+}
+.d3-slider-horizontal .d3-slider-handle {
+  top: -8px;
+  margin-left: -12px;
+}
+.d3-slider-handle:after {
+  box-sizing: border-box;
+  content: " ";
+  width: 1px;
+  position: absolute;
+  left: 12.5px;
+  top: -360px;
+  height: 380px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px white, 0px 0px 20px white, 0px 0px 30px white;
+}
+.pipe {
+  box-sizing: border-box;
+  content: " ";
+  width: 1px;
+  position: absolute;
+  left: 12.5px;
+  top: -650px;
+  height: 660px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px white, 0px 0px 20px white, 0px 0px 30px white;
+}
+.arrow {
+  display: inline-block;
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+}
+.arrow.right {
+  left: 15px;
+  top: 2px;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 24px solid #202e8f;
+}
+.arrow.left {
+  left: -13px;
+  top: 2px;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 24px solid #202e8f;
+}
+.arrow.left:after {
+  position: absolute;
+  top: -12px;
+  left: -2px;
+  z-index: -1;
+  content: " ";
+  width: 0px;
+  height: 0px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 28px solid rgba(255, 255, 255, 0.6);
+}
+.arrow.right:after {
+  position: absolute;
+  top: -12px;
+  left: -26px;
+  z-index: -1;
+  content: " ";
+  width: 0px;
+  height: 0px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 28px solid rgba(255, 255, 255, 0.6);
+}
+/*.d3-slider-axis {
+    position: relative;
+    z-index: 1;    
+}
+
+.d3-slider-axis-bottom {
+    top: .8em;
+}
+
+.d3-slider-axis-right {
+    left: .8em;
+}
+
+.d3-slider-axis path {
+    stroke-width: 0;
+    fill: none;
+}
+
+.d3-slider-axis line {
+    fill: none;
+    stroke: #aaa;
+    shape-rendering: crispEdges;
+}
+
+.d3-slider-axis text {
+    font-size: 11px;
+}
+
+.d3-slider-vertical .d3-slider-handle {
+    left: -.25em;
+    margin-left: 0;
+    margin-bottom: -.6em;      
+} */

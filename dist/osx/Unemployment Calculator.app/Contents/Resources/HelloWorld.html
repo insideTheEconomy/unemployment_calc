@@ -1,0 +1,77 @@
+<html> 
+<head> 
+	<meta charset="utf-8">
+	<title>D3: </title>
+
+
+
+<link rel="stylesheet" href="CSS/d3.slider.css" />
+<link rel="stylesheet" href="CSS/chart.css" />
+<script src="JS/jquery-1.9.1.js"></script>
+<script>
+ var u;
+  $( document ).ready(function() {
+    
+	u = new unChart(1024,500); 
+	u.build("#d3"); 
+	buildSampleData();
+	u.dataset = obs_def;
+  });
+ 
+</script>
+<script src="JS/jquery-ui.js"></script>
+
+<script type="text/javascript" src="JS/AIRAliases.js"></script>
+<script type="text/javascript" src = "JS/data_sample.js"></script>
+<script type="text/javascript" src = "JS/functions_dev.js"></script>
+<script type="text/javascript" src = "JS/functions.js"></script>
+<script type="text/javascript" src="JS/d3.v3.js"></script>
+<script src="JS/d3.slider.js"></script>
+<script type="text/javascript" src = "JS/d3_class.js"></script>
+</head> 
+
+<body> 
+	<h3>National Average:</h3><h2 class="national datum"></h2>
+	<h3 class="current">Current Average:</h3><h2 class="current datum"></h2>
+	<div id="d3"></div>
+    <form>
+	  <div id="radio">
+		<input g_id="0" type="radio" id="radio1" name="radio" /><label for="radio1">None</label>
+		    <input g_id="1" type="radio" id="radio2" name="radio" checked="checked" /><label for="radio2">Male</label>
+		    <input g_id="2" type="radio" id="radio3" name="radio" /><label for="radio3">Female</label>
+	  </div>
+		<input type="button" id = "submit" value="Load" />	
+	</form>
+	<p id = "result"></p>
+</body> 
+
+<script>
+	
+	
+
+
+
+	var OBS;
+	$(document).on("FRED", function(e){
+		air.trace("update: "+e.time);
+		OBS = e.json;
+		var h = "<h1>DATA:</h1>";
+		u.dataset = OBS;
+	/*	$.each(OBS,function(i,v){
+				var line = "<p>"+i+":"+" ["+v["date"]+"] >> "+v["value"];
+				h+=line;
+			})
+			$("#result").html(h);*/
+		});
+	var db = new DBConnector();
+	db.open();
+    $( "input[type='radio']" ).click( function(e){
+		curr_gid = $(this).attr("g_id");
+		air.trace("gid: "+curr_gid);
+		ids = {"g":curr_gid,"ed":0,"ar":0};
+		db.queryByIds( ids );
+	} );
+
+
+</script>
+</html>

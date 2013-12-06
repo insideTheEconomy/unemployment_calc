@@ -6,19 +6,19 @@
   margin-top: -34px;
 }
 .d3-slider-horizontal {
-  height: 0;
+  height: 0px;
 }
 .d3-slider-handle {
   box-sizing: border-box;
   position: absolute;
-  width: 24;
-  height: 18;
+  width: 24px;
+  height: 18px;
   background: none;
   z-index: 3;
 }
 .d3-slider-horizontal .d3-slider-handle {
   top: -8px;
-  margin-left: -12;
+  margin-left: -12px;
 }
 .d3-slider-handle:after {
   box-sizing: border-box;
@@ -26,10 +26,10 @@
   width: 1px;
   position: absolute;
   left: 12.5px;
-  top: -650;
-  height: 660;
+  top: -360px;
+  height: 380px;
   background-color: white;
-  -webkit-box-shadow: 0px 0px 10px white,0px 0px 20px white,0px 0px 30px white;
+  -webkit-box-shadow: 0px 0px 10px white, 0px 0px 20px white, 0px 0px 30px white;
 }
 .pipe {
   box-sizing: border-box;
@@ -37,58 +37,58 @@
   width: 1px;
   position: absolute;
   left: 12.5px;
-  top: -650;
-  height: 660;
+  top: -650px;
+  height: 660px;
   background-color: white;
-  -webkit-box-shadow: 0px 0px 10px white,0px 0px 20px white,0px 0px 30px white;
+  -webkit-box-shadow: 0px 0px 10px white, 0px 0px 20px white, 0px 0px 30px white;
 }
 .arrow {
   display: inline-block;
   position: absolute;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 .arrow.right {
   left: 15px;
   top: 2px;
-  width: 0;
-  height: 0;
-  border-top: 10 solid transparent;
-  border-bottom: 10 solid transparent;
-  border-left: 24 solid #202e8f;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 24px solid #202e8f;
 }
 .arrow.left {
-  left: -13;
+  left: -13px;
   top: 2px;
-  width: 0;
-  height: 0;
-  border-top: 10 solid transparent;
-  border-bottom: 10 solid transparent;
-  border-right: 24 solid #202e8f;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 24px solid #202e8f;
 }
 .arrow.left:after {
   position: absolute;
-  top: -12;
-  left: -2;
+  top: -12px;
+  left: -2px;
   z-index: -1;
   content: " ";
-  width: 0;
-  height: 0;
-  border-top: 12 solid transparent;
-  border-bottom: 12 solid transparent;
-  border-right: 28 solid rgba(255, 255, 255, 0.6);
+  width: 0px;
+  height: 0px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 28px solid rgba(255, 255, 255, 0.6);
 }
 .arrow.right:after {
   position: absolute;
-  top: -12;
-  left: -26;
+  top: -12px;
+  left: -26px;
   z-index: -1;
   content: " ";
-  width: 0;
-  height: 0;
-  border-top: 12 solid transparent;
-  border-bottom: 12 solid transparent;
-  border-left: 28 solid rgba(255, 255, 255, 0.6);
+  width: 0px;
+  height: 0px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 28px solid rgba(255, 255, 255, 0.6);
 }
 /*.d3-slider-axis {
     position: relative;

@@ -1,0 +1,150 @@
+<html> 
+<head> 
+	<meta charset="utf-8">
+	<title>Unemployment Calculator</title>
+
+
+
+<link rel="stylesheet" href="CSS/d3.slider.css" />
+<link rel="stylesheet" href="CSS/chart.css" />
+<link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="CSS/jquery-ui-custom.css">
+
+<script src="JS/jquery-1.9.1.js"></script>
+<script>
+ var u;
+var curr_gid;
+  $( document ).ready(function() {
+    //create a chart instance
+	u = new unChart(1024,425); 
+	//call build on parent container
+	u.build("#d3"); 
+	buildSampleData(); //only for debugging without database class
+	u.baseline = sample_data[0]; //set baseline and domain/range
+	u.dataset = sample_data[0]; //draw data, this can happen anytime.
+  });
+ 
+</script>
+<script src="JS/jquery-ui.js"></script>
+<script src="JS/jquery-ui-custom.js"></script>
+
+<script type="text/javascript" src = "JS/data_sample.js"></script> 
+<script type="text/javascript" src = "JS/functions_dev.js"></script>
+<script type="text/javascript" src = "JS/functions.js"></script>
+<script type="text/javascript" src="JS/d3.v3.js"></script>
+<script src="JS/d3.slider.js"></script>
+<script type="text/javascript" src = "JS/d3_class.js"></script>
+<script src="JS/buttons.js"></script>
+</head> 
+
+<body> 
+	
+	<div id = "buttonsets">
+		<form>
+			<div id="genderbtn"  category = "g" >
+				<input type="radio" _id = "1" id="g1" name="radio"><label for="g1">M</label></input>
+				<input type="radio" _id = "2" id="g2" name="radio"><label for="g2">F</label></input>
+			</div>
+		</form>
+		<form>
+			<div id="educationbtn"  category = "ed" >
+				<input type="radio" _id = "0" id="ed0" name="radio"><label for="ed0">No Degree</label></input>
+				<input type="radio" _id = "2" id="ed2" name="radio"><label for="ed2">Highschool</label></input>
+				<input type="radio" _id = "3" id="ed3" name="radio"><label for="ed3">Assoc. Occupational</label></input>
+				<input type="radio" _id = "4" id="ed4" name="radio"><label for="ed4">Assoc. Academic</label></input>
+				<input type="radio" _id = "5" id="ed5" name="radio"><label for="ed5">Bachelor</label></input>
+				<input type="radio" _id = "6" id="ed6" name="radio"><label for="ed6">Master</label></input>
+			</div>
+		</form>
+		<form>
+			<div id="agebtn" category = "ar" >
+				<input type="radio" _id = "4" id="ar4" name="radio"><label for="ar4">25 - 34</label></input>
+				<input type="radio" _id = "5" id="ar5" name="radio"><label for="ar5">35 - 44</label></input>
+				<input type="radio" _id = "6" id="ar6" name="radio"><label for="ar6">45 - 54</label></input>
+				<input type="radio" _id = "7" id="ar7" name="radio"><label for="ar7">55 - 64</label></input>
+				<input type="radio" _id = "8" id="ar8" name="radio"><label for="ar8">65 +</label></input>
+			</div>
+		</form>
+	</div>
+	
+	<div id="TopContainer">
+		<div id="TopLeft">
+			<p><img src="IMAGES/title.png" width="449" height="92" alt="Title"></p>
+			<h2>See how different characteristics relate </br> to unemployment in the United States.</h2>
+		</div>
+		<div id="TopRight">
+			<div class="LabelTop"><br/>National<br/>Average</div><div class="Percent National base datum">11.2%</div><br/><br/><br/><br/><div class="Percent Custom current datum">4.7%</div>
+			<div class="LabelTop">Gender : Age <br/> Degree Level</div>
+		</div>
+	</div>
+	
+	<!-- this is garbage, just here to make the chart move, will be replaced by unButtons class -->
+	<div id="d3"></div>
+	<p id = "result"></p>
+	
+	<div id="BotContainer">
+		<div id="BotLeft">
+			<div class="LabelGender">Gender</div>
+		</div>
+		
+		<div id="BotRight">
+			<div class="LabelBot Edu">Education</div>
+			<br/><br/><br/><br/><br/><br/>
+			<div class="LabelBot Age">Age</div>
+		</div>
+	</div>
+</body> 
+
+<script>
+	var btns = new unButtons();  //create instance of class
+	btns.build("#buttonsets"); //initialize with a selector for the wrapper div
+
+</script>
+
+<script>
+	//create some objects to hold responses, not necessary but useful for debugging
+	var EV;  //current SLIDER event object
+	var OBS;//current observationS - according to filters
+	var OB; //current observation - according to slider position
+	var B;  //baseline observation  -   ""     ""
+	
+	//create a database connection, and open it.
+	var db = new DBConnector();
+	db.open();
+	
+	//Listener on database class, called when new data is available
+	$(document).on("FRED", function(e){
+		OBS = e.observations; 
+	
+		var h = "<h1>DATA:</h1>";
+		u.dataset = OBS;
+	/*	$.each(OBS,function(i,v){
+				var line = "<p>"+i+":"+" ["+v["date"]+"] >> "+v["value"];
+				h+=line;
+			})
+			$("#result").html(h);*/
+		});
+	//listener on unChart, called when slider moves.
+	$(document).on("SLIDER", function(e){
+		EV = e;
+		OB = e.observation;
+		B = e.base;
+		$(".current.datum").text(OB.value + "%");
+		$(".base.datum").text(B.value + "%");
+
+		});
+		
+	$(document).on("BUTTON", function(e){
+			console.log(e.ids);
+			db.queryByIds(e.ids);
+		})  //add an event listener, fired each time a button is clicked.
+	
+	//neccessary bastard function to support gender stereotypes
+	var colorUpdate = function(id){
+		d3.select(".line.current").classed("male", (id == "1"));
+		d3.select(".line.current").classed("female", (id == "2"));
+		$(".current.datum").toggleClass("male", (id == "1"));
+		$(".current.datum").toggleClass("female", (id == "2"));
+	}
+</script>
+</html>

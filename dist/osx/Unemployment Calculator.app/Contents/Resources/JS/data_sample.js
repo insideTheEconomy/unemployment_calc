@@ -1,0 +1,36 @@
+var nogender = '[{"date": "2003-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.8"}, {"date": "2004-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.8"}, {"date": "2004-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.3"}, {"date": "2005-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.3"}, {"date": "2005-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.8"}, {"date": "2006-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.8"}, {"date": "2006-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.5"}, {"date": "2007-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.6"}, {"date": "2007-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.6"}, {"date": "2008-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.3"}, {"date": "2008-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "6.3"}, {"date": "2009-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "9.0"}, {"date": "2009-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "9.6"}, {"date": "2010-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "9.9"}, {"date": "2010-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "9.3"}, {"date": "2011-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "9.2"}, {"date": "2011-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.7"}, {"date": "2012-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.3"}, {"date": "2012-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "7.8"}, {"date": "2013-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "7.7"}, {"date": "2013-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "."}]';
+var male = '[{"date": "2003-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.9"}, {"date": "2004-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "6.0"}, {"date": "2004-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.3"}, {"date": "2005-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.5"}, {"date": "2005-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.7"}, {"date": "2006-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.9"}, {"date": "2006-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.3"}, {"date": "2007-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.9"}, {"date": "2007-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.6"}, {"date": "2008-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.6"}, {"date": "2008-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "6.6"}, {"date": "2009-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "10.2"}, {"date": "2009-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "10.4"}, {"date": "2010-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "11.2"}, {"date": "2010-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "9.8"}, {"date": "2011-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "9.9"}, {"date": "2011-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.8"}, {"date": "2012-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.7"}, {"date": "2012-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "7.8"}, {"date": "2013-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.1"}, {"date": "2013-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "."}]';
+var fem = '[{"date": "2003-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.7"}, {"date": "2004-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.5"}, {"date": "2004-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.3"}, {"date": "2005-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.1"}, {"date": "2005-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.1"}, {"date": "2006-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.6"}, {"date": "2006-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.6"}, {"date": "2007-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.3"}, {"date": "2007-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.7"}, {"date": "2008-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "4.9"}, {"date": "2008-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "5.9"}, {"date": "2009-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "7.5"}, {"date": "2009-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.6"}, {"date": "2010-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.5"}, {"date": "2010-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.8"}, {"date": "2011-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.4"}, {"date": "2011-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "8.6"}, {"date": "2012-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "7.9"}, {"date": "2012-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "7.9"}, {"date": "2013-01-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "7.3"}, {"date": "2013-07-01", "realtime_start": "2013-12-04", "realtime_end": "2013-12-04", "value": "."}]';
+var obs_def = [];
+
+var sample_data = [];
+
+
+function buildSampleData(){
+	var nogender_json = JSON.parse(nogender);
+	var fem_json = JSON.parse(fem); 
+	var male_json = JSON.parse(male);
+	obs_def = nogender_json;
+
+	$.each(nogender_json,function(i,v){
+		str = v.date;
+		a = str.split("-");
+		var _d = new Date(a[0],a[1],a[2]);
+		v.jsDate = _d;
+	});
+	$.each(fem_json,function(i,v){
+		str = v.date;
+		a = str.split("-");
+		var _d = new Date(a[0],a[1],a[2]);
+		v.jsDate = _d;
+	}); 
+	$.each(male_json,function(i,v){
+		str = v.date;
+		a = str.split("-");
+		var _d = new Date(a[0],a[1],a[2]);
+		v.jsDate = _d;
+	}); 
+	
+	sample_data = [nogender_json, male_json, fem_json];
+}
+		
