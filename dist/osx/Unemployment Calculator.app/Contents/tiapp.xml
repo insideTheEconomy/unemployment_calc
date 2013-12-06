@@ -11,14 +11,14 @@
 <window>
 <id>initial</id>
 <title>Unemployment Calculator</title>
-<url>app://index_tide.html</url>
+<url>app://index.html</url>
 <width>1024</width>
 <max-width>3000</max-width>
 <min-width>0</min-width>
 <height>768</height>
 <max-height>3000</max-height>
 <min-height>0</min-height>
-<fullscreen>false</fullscreen>
+<fullscreen>true</fullscreen>
 <resizable>false</resizable>
 <chrome scrollbars="true">true</chrome>
 <maximizable>true</maximizable>
