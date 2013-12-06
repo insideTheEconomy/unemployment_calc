@@ -7,7 +7,17 @@
 
 <link rel="stylesheet" href="CSS/d3.slider.css" />
 <link rel="stylesheet" href="CSS/chart.css" />
+<link rel="stylesheet" href="CSS/jquery-ui-custom.css" />
+
 <script src="JS/jquery-1.9.1.js"></script>
+<script src="JS/jquery-ui.js"></script>
+<script type="text/javascript" src = "JS/data_sample.js"></script> 
+<script type="text/javascript" src = "JS/functions_dev.js"></script>
+<script type="text/javascript" src = "JS/functions.js"></script>
+<script type="text/javascript" src="JS/d3.v3.js"></script>
+<script src="JS/d3.slider.js"></script>
+<script type="text/javascript" src = "JS/d3_class.js"></script>
+
 <script>
  var u;
 var curr_gid;
@@ -22,21 +32,14 @@ var curr_gid;
   });
  
 </script>
-<script src="JS/jquery-ui.js"></script>
 
-<script type="text/javascript" src = "JS/data_sample.js"></script> 
-<script type="text/javascript" src = "JS/functions_dev.js"></script>
-<script type="text/javascript" src = "JS/functions.js"></script>
-<script type="text/javascript" src="JS/d3.v3.js"></script>
-<script src="JS/d3.slider.js"></script>
-<script type="text/javascript" src = "JS/d3_class.js"></script>
 </head> 
 
 <body> 
 	<h3 class = "base label">National Average:</h3><h2 class="base datum">2</h2><br />
 	<h3 class="current label">Current Average:</h3><h2 class="current datum">3</h2>
 	<!-- this is garbage, just here to make the chart move, will be replaced by unButtons class -->
-	<div id="d3"></div>
+	<div><div id="d3"></div></div>
     <form>
 	  <div id="radio">
 		<input g_id="0" type="radio" id="radio1" name="radio" /><label for="radio1">None</label>

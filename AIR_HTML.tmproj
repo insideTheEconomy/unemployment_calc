@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>index.html</string>
+	<string>JS/d3_class.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -52,9 +52,15 @@
 		</dict>
 		<dict>
 			<key>filename</key>
+			<string>untitled.html</string>
+			<key>lastUsed</key>
+			<date>2013-12-05T21:29:37Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
 			<string>index.html</string>
 			<key>lastUsed</key>
-			<date>2013-12-05T17:38:23Z</date>
+			<date>2013-12-05T22:16:34Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -239,19 +245,63 @@
 				<integer>46</integer>
 			</dict>
 		</dict>
-		<key>JS/d3_class.js</key>
+		<key>JS/d3.slider.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>JS/d3.v3.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>JS/d3_class.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>219</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>116</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>50</integer>
+				<key>line</key>
+				<integer>220</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>219</integer>
+			</dict>
 		</dict>
 		<key>JS/d3_stuff.js</key>
 		<dict>
@@ -402,29 +452,29 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>77</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>27</integer>
+				<integer>2</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>64</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>2</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>107</integer>
+				<integer>2</integer>
 			</dict>
 		</dict>
 		<key>test.db</key>
@@ -455,6 +505,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>untitled.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
@@ -465,6 +529,7 @@
 		<string>CSS/chart.less</string>
 		<string>CSS/chart.css</string>
 		<string>JS/d3_class.js</string>
+		<string>JS/d3.slider.js</string>
 		<string>JS/data_sample.js</string>
 		<string>JS/d3_stuff.js</string>
 		<string>JS/buttons.js</string>
@@ -477,11 +542,13 @@
 		<string>CSS/d3.slider.less</string>
 		<string>CSS/jquery-ui-custom.less</string>
 		<string>index.html</string>
+		<string>untitled.html</string>
+		<string>JS/d3.v3.js</string>
 		<string>JS/functions_dev.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{101, -896}, {1230, 896}}</string>
+	<string>{{21, 154}, {1230, 874}}</string>
 </dict>
 </plist>
