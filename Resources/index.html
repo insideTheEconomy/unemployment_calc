@@ -11,9 +11,10 @@
 <link rel="stylesheet" href="CSS/jquery-ui-custom.css">
 
 <script src="JS/jquery-1.9.1.js"></script>
+
 <script>
- var u;
-var curr_gid;
+  var u;
+  var curr_gid;
   $( document ).ready(function() {
     //create a chart instance
 	u = new unChart(1024,425); 
@@ -23,11 +24,10 @@ var curr_gid;
 	u.baseline = sample_data[0]; //set baseline and domain/range
 	u.dataset = sample_data[0]; //draw data, this can happen anytime.
   });
- 
 </script>
+
 <script src="JS/jquery-ui.js"></script>
 <script src="JS/jquery-ui-custom.js"></script>
-
 <script type="text/javascript" src = "JS/data_sample.js"></script> 
 <script type="text/javascript" src = "JS/db_functions.js"></script>
 <script type="text/javascript" src = "JS/functions.js"></script>
@@ -115,14 +115,9 @@ var curr_gid;
 	//Listener on database class, called when new data is available
 	$(document).on("FRED", function(e){
 		OBS = e.observations; 
-	
+		
 		var h = "<h1>DATA:</h1>";
 		u.dataset = OBS;
-	/*	$.each(OBS,function(i,v){
-				var line = "<p>"+i+":"+" ["+v["date"]+"] >> "+v["value"];
-				h+=line;
-			})
-			$("#result").html(h);*/
 		});
 	//listener on unChart, called when slider moves.
 	$(document).on("SLIDER", function(e){
@@ -141,6 +136,7 @@ var curr_gid;
 	
 	//neccessary bastard function to support gender stereotypes
 	var colorUpdate = function(id){
+		console.log("colorUpdate");
 		d3.select(".line.current").classed("male", (id == "1"));
 		d3.select(".line.current").classed("female", (id == "2"));
 		$(".current.datum").toggleClass("male", (id == "1"));

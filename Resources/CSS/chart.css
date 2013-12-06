@@ -35,7 +35,6 @@ circle {
   stroke: grey;
 }
 body {
-  background-image: url(../IMG/bg.jpg);
   color: white;
 }
 h2.datum {
@@ -60,7 +59,7 @@ h3.label {
   display: inline;
 }
 #d3 {
-  height: 720;
-  width: 960;
+  height: 425px;
+  width: 1024px;
   background-color: rgba(0, 0, 0, 0.7);
 }

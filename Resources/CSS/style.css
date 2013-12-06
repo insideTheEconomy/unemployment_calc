@@ -192,7 +192,7 @@ html, body
 	font-family: "label";
 	color:white;
 	margin-left:33px;
-	margin-top:-285px;
+	margin-top:6px;
 	text-shadow: 3px 3px 2px #4d4d4d;
 	pointer-events:none;
 }
