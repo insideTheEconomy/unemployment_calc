@@ -35,7 +35,7 @@
 <script src="JS/d3.slider.js"></script>
 <script type="text/javascript" src = "JS/d3_class.js"></script>
 <script src="JS/buttons.js"></script>
-</head> 
+</head>
 
 <body> 
 	
@@ -137,10 +137,8 @@
 	//neccessary bastard function to support gender stereotypes
 	var colorUpdate = function(id){
 		console.log("colorUpdate");
-		//d3.select(".line.current").classed("male", (id == "1"));
-		//d3.select(".line.current").classed("female", (id == "2"));
-		d3.select(".line.current").toggleClass("male", (id == "1"));
-		d3.select(".line.current").toggleClass("female", (id == "2"));
+		d3.select(".line.current").classed("male", (id == "1"));
+		d3.select(".line.current").classed("female", (id == "2"));
 		$(".current.datum").toggleClass("male", (id == "1"));
 		$(".current.datum").toggleClass("female", (id == "2"));
 	}
