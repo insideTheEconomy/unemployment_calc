@@ -106,12 +106,21 @@ Object.defineProperty(p, "baseline",{
 		}});
 	
 p.update = function(){
-	
+	ds = this.dScale;
 	ys = this.yScale;
 	sv = this.svg;
 
 //	ys.domain([0, d3.max(this.data, function(d) { return parseFloat(d.value); })]);
 	ys.domain( d3.extent(this.data, function(d) { return parseFloat(d.value)}))
+	ds.domain(d3.extent(this.base, function(d,i){
+		//d.jsDate = new new Date(d.date);
+		return d.jsDate ;
+	}))
+	sv.select(".x.axis")
+    	.transition()
+    	.duration(this.speed)
+		.call(this.xAxis);
+	
 	sv.select(".y.axis")
     	.transition()
     	.duration(this.speed)
@@ -123,6 +132,11 @@ p.update = function(){
 				.transition()
 		    	.duration(this.speed)
 			//	.attr("class","line current")
+				.attr("d", this.line);
+	sv.select(".line.base")
+				.datum(this.base)
+				.transition()
+		    	.duration(this.speed)
 				.attr("d", this.line);
 				
 	$.event.trigger({
@@ -250,15 +264,8 @@ p.drawBase = function(){
 		    	.duration(this.speed)
 				.attr("d", this.line);
 
-	sv.select(".line.moving")
-				.datum(this.base)
-				.transition()
-		    	.duration(this.speed)
-				.attr("d", this.line2);
-				
 
-
-	var circ = sv.selectAll("circle")
+/*	var circ = sv.selectAll("circle")
 				.data(this.base);
 	circ
 				.enter()
@@ -276,7 +283,7 @@ p.drawBase = function(){
 			})
 			.attr("r", function(d) {
 				return 1;
-			});
+			}); */
 	
 };
 
