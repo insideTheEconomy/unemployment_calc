@@ -22,37 +22,37 @@ svg .line {
   stroke: white;
 }
 svg .line.male {
-  stroke: #a4dbe8;
+  stroke: #2baeff;
 }
 svg .line.female {
-  stroke: #ad1aac;
+  stroke: #ff2b84;
 }
 svg .line.base {
   stroke: #ffb81c;
 }
 circle {
-  fill: #a4dbe8;
+  fill: #2baeff;
   stroke: grey;
 }
 body {
   color: white;
 }
-h2.datum {
+h4.datum {
   margin-left: .33em;
   font-size: 3em;
   display: inline;
 }
-h2.datum.base {
+h4.datum.base {
   color: #ffb81c;
 }
-h2.datum.current {
+h4.datum.current {
   color: white;
 }
-h2.datum.male {
-  color: #a4dbe8;
+h4.datum.male {
+  color: #2baeff;
 }
-h2.datum.female {
-  color: #ad1aac;
+h4.datum.female {
+  color: #ff2b84;
 }
 h3.label {
   font-size: 1.5em;

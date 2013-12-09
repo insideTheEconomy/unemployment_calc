@@ -191,8 +191,8 @@ html, body
 	text-align:right;
 	font-family: "label";
 	color:white;
-	margin-left:33px;
-	margin-top:6px;
+	margin-left:39px;
+	margin-top:-10px;
 	text-shadow: 3px 3px 2px #4d4d4d;
 	pointer-events:none;
 }
@@ -209,7 +209,6 @@ html, body
 	float:left;
 	top:-200px;
 	left:30px;
-	
 }
 .LabelBot.Edu {
 	top:625px;
@@ -231,13 +230,19 @@ html, body
 	margin-top:13px;
 }
 .Percent.Custom {
-	color:#FF3640;
+	color:#FFD469;
 	margin-top:-8px;
+}
+.Percent.Custom.male {
+	color:#2BAEFF;
+}
+.Percent.Custom.female {
+	color:#FF2B84;
 }
 
 #genderbtn {
 	position:absolute;
-	top:725px;
+	top:705px;
 	left:30px;
 	font-size:12px;
 }
