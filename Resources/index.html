@@ -2,40 +2,6 @@
 <head> 
 	<meta charset="utf-8">
 	<title>Unemployment Calculator</title>
-	
-	<link rel="stylesheet" href="CSS/d3.slider.css" />
-	<link rel="stylesheet" href="CSS/chart.css" />
-	<link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="CSS/jquery-ui-custom.css">
-	
-	<script src="JS/jquery-1.9.1.js"></script>
-	
-	<script>
-	  var u;
-	  var curr_gid;
-	  $( document ).ready(function() {
-	    //create a chart instance
-		u = new unChart(1024,425); 
-		//call build on parent container
-		u.build("#d3"); 
-		buildSampleData(); //only for debugging without database class
-		u.baseline = db.baseline; //set baseline and domain/range
-	//	u.dataset = sample_data[0]; //draw data, this can happen anytime.
-	  });
-	</script>
-	
-	<script src="JS/jquery-ui.js"></script>
-	<script src="JS/jquery-ui-custom.js"></script>
-	<script type="text/javascript" src = "JS/data_sample.js"></script> 
-	<script type="text/javascript" src = "JS/db_functions.js"></script>
-	<script type="text/javascript" src = "JS/functions.js"></script>
-	<script type="text/javascript" src="JS/d3.v3.js"></script>
-	<script src="JS/d3.slider.js"></script>
-	<script type="text/javascript" src = "JS/d3_class.js"></script>
-	<script src="JS/buttons.js"></script>
-
-
-
 
 <link rel="stylesheet" href="CSS/d3.slider.css" />
 <link rel="stylesheet" href="CSS/chart.css" />
@@ -75,8 +41,8 @@
 	<div id = "buttonsets">
 		<form>
 			<div id="genderbtn"  category = "g" >
-				<input type="radio" _id = "1" id="g1" name="radio"><label for="g1"><object data="IMAGES/icon_442.svg" width="19px" height="36px" type="image/svg+xml"></object></label></input>
-				<input type="radio" _id = "2" id="g2" name="radio"><label for="g2"><object data="IMAGES/icon_663.svg" width="19px" height="36px" type="image/svg+xml"></object></label></input>
+				<input type="radio" _id = "1" id="g1" name="radio"><label for="g1"><img src="IMAGES/icon_male.png" width="17" height="36" alt="Icon Male"></label></input>
+				<input type="radio" _id = "2" id="g2" name="radio"><label for="g2"><img src="IMAGES/icon_female.png" width="17" height="36" alt="Icon Female"></label></input>
 			</div>
 		</form>
 		<form>
