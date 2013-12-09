@@ -122,7 +122,7 @@ p.update = function(){
 	scaleMin = d3.max(this.data, function(d, i) { return Math.max( d.value, _base[i].value ) } );
 	scaleMax = 	d3.min(this.data, function(d, i) { return Math.min( d.value, _base[i].value ) } );
 	this.yScale.domain( 
-		[scaleMin,scaleMax]
+		[scaleMax,scaleMin]
 		
 	)
 	

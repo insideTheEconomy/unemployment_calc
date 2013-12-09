@@ -41,6 +41,7 @@
 .ui-helper-clearfix {
   min-height: 0;
   /* support: IE7 */
+
 }
 .ui-helper-zfix {
   width: 100%;
@@ -89,6 +90,7 @@
   text-align: center;
   overflow: visible;
   /* removes extra width in IE */
+
 }
 .ui-button,
 .ui-button:link,
@@ -314,6 +316,7 @@ button.ui-button::-moz-focus-inner {
 .ui-state-disabled .ui-icon {
   filter: alpha(opacity=35);
   /* For IE8 - See #6059 */
+
 }
 /* Icons
 ----------------------------------*/
