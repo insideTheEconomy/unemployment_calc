@@ -51,11 +51,8 @@ function unChart(_w , _h ){
 			  .scale(this.dScale)
 			  .orient("bottom")
 			  .ticks(5);
-	
-	
-	
-
-
+			
+	this.line = d3.svg.line();
 }
 
 p = unChart.prototype;
@@ -71,6 +68,19 @@ p.build = function( sel ){
 				"height": this.h,
 				"class" : "chart"
 			})
+	
+	gutter = 5;
+	clipPad = this.padding.left + gutter;	
+	this.clip = this.svg.append("defs").append("clipPath")
+		.attr("id", "clip")
+		.append("svg:rect")
+		.attr("id", "clip-rect")
+		.attr({x: clipPad  , y:0 })
+		.attr({width: this.innerWidth - gutter, height:this.h })
+		
+	this.chartBody = this.svg.append("g")
+		.attr("clip-path", "url(#clip)")
+		
 	this.svg.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + (this.h - this.padding.bottom) + ")")
@@ -82,9 +92,9 @@ p.build = function( sel ){
 		.attr("transform", "translate(" + this.padding.left + ",0)")
 		.call(this.yAxis);
 		
-	this.svg.append("path").attr("class"," line current");	
-	this.svg.append("path").attr("class"," line moving");	
-	this.svg.append("path").attr("class"," line base");
+	this.chartBody.append("path").attr("class"," line current");	
+//	this.svg.append("path").attr("class"," line base");
+	this.chartBody.append("path").attr("class"," line base");
 	
 
 }
@@ -104,36 +114,46 @@ Object.defineProperty(p, "baseline",{
 		console.log("DATASET RECEIVED");
 		this.drawBase();
 		}});
-	
-p.update = function(){
-	ds = this.dScale;
-	ys = this.yScale;
-	sv = this.svg;
 
-//	ys.domain([0, d3.max(this.data, function(d) { return parseFloat(d.value); })]);
-	ys.domain( d3.extent(this.data, function(d) { return parseFloat(d.value)}))
-	ds.domain(d3.extent(this.base, function(d,i){
+
+p.update = function(){			
+//	this.yScale.domain( d3.extent(this.data, function(d, i) { return parseFloat(d.value) }))
+	_base = this.base;
+	scaleMin = d3.max(this.data, function(d, i) { return Math.max( d.value, _base[i].value ) } );
+	scaleMax = 	d3.min(this.data, function(d, i) { return Math.min( d.value, _base[i].value ) } );
+	this.yScale.domain( 
+		[scaleMin,scaleMax]
+		
+	)
+	
+	
+	this.dScale.domain(d3.extent(this.data, function(d){
 		//d.jsDate = new new Date(d.date);
 		return d.jsDate ;
 	}))
-	sv.select(".x.axis")
+	
+	this.yAxis.scale(this.yScale);
+	this.xAxis.scale(this.dScale);
+	
+	this.svg.select(".x.axis")
     	.transition()
     	.duration(this.speed)
 		.call(this.xAxis);
 	
-	sv.select(".y.axis")
+	this.svg.select(".y.axis")
     	.transition()
     	.duration(this.speed)
 		.call(this.yAxis);
 		
 	//finally, lines and dots!
-	sv.select(".line.current")
+	this.chartBody.select(".line.current")
 				.datum(this.data)
 				.transition()
 		    	.duration(this.speed)
 			//	.attr("class","line current")
 				.attr("d", this.line);
-	sv.select(".line.base")
+				
+	this.chartBody.select(".line.base")
 				.datum(this.base)
 				.transition()
 		    	.duration(this.speed)
@@ -144,62 +164,38 @@ p.update = function(){
 				observation: this.data[this.sliderValue],
 				base: this.base[this.sliderValue]
 			}); 
-	this.drawBase();
-/*	var circ = sv.selectAll("circle")
-				.data(this.data);
-	circ
-				.enter()
-				.append("circle")
-				
-	circ
-			.transition()
-	    	.duration(this.speed)
-			.delay(function(d, i) { return i / 700 * 800; })
-			.attr("cx", function(d,i) {
-				return ds(d.jsDate );
-			})
-			.attr("cy", function(d) {
-				return ys(d.value);
-			})
-			.attr("r", function(d) {
-				return 1;
-			});*/
-	
+//	this.drawBase();
 };
 
 p.drawBase = function(){
 	console.log("drawing Baseline");
-	ds = this.dScale;
-	ys = this.yScale;
-	sv = this.svg;
 	
 	
 	//update domains
-	
-	ds.domain(d3.extent(this.base, function(d,i){
+	console.log("updating domains");
+	this.dScale.domain(d3.extent(this.base, function(d,i){
 		//d.jsDate = new new Date(d.date);
 		return d.jsDate ;
 	}))
 	
-	
-	ys.domain( d3.extent(this.base, function(d) { return parseFloat(d.value)}))
-	this.line = d3.svg.line()
-			.x(function(d){return ds(d.jsDate )})
-			.y(function(d){return ys(d.value)}).interpolate("cardinal")
-			;
-			this.line.defined(function(d) { return !isNaN(d.value); });;
+	this.yScale.domain( d3.extent(this.base, function(d) { return parseFloat(d.value)}))
+	console.log("line function");
+	ds = this.dScale;
+	ys = this.yScale;
+	this.line
+		.x(function(d){return ds(d.jsDate )})
+		.y(function(d){return ys(d.value)}).interpolate("cardinal")
+		
 	
 	
 	//setup axes
 	//  X axis
-	sv.select(".x.axis")
+	this.svg.select(".x.axis")
     	.transition()
     	.duration(this.speed)
 		.call(this.xAxis);
-	
-	
 	//Y axis
-	sv.select(".y.axis")
+	this.svg.select(".y.axis")
     	.transition()
     	.duration(this.speed)
 		.call(this.yAxis);
@@ -235,7 +231,7 @@ p.drawBase = function(){
 	handle.append("div").attr("class","arrow right");
 	
 	//add label
-	sv.append("text")
+	this.svg.append("text")
 	    .attr("class", "y label")
 	    .attr("text-anchor", "end")
 	    .attr("y", 6)
@@ -245,46 +241,24 @@ p.drawBase = function(){
 	    .text("(Percent)");
 	
 	//and axes, X axis
-	sv.select(".x.axis")
+	this.svg.select(".x.axis")
     	.transition()
     	.duration(this.speed)
 		.call(this.xAxis);
 	
 	
 	//Update Y axis
-	sv.select(".y.axis")
+	this.svg.select(".y.axis")
     	.transition()
     	.duration(this.speed)
 		.call(this.yAxis);
 	
 	//finally, lines and dots!
-	sv.select(".line.base")
+	this.chartBody.select(".line.base")
 				.datum(this.base)
 				.transition()
 		    	.duration(this.speed)
-				.attr("d", this.line);
-
-
-/*	var circ = sv.selectAll("circle")
-				.data(this.base);
-	circ
-				.enter()
-				.append("circle")
-				
-	circ
-			.transition()
-	    	.duration(this.speed)
-			.delay(function(d, i) { return i / 700 * 800; })
-			.attr("cx", function(d,i) {
-				return ds(d.jsDate );
-			})
-			.attr("cy", function(d) {
-				return ys(d.value);
-			})
-			.attr("r", function(d) {
-				return 1;
-			}); */
-	
+				.attr("d", this.line);	
 };
 
 
