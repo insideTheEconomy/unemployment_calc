@@ -37,6 +37,9 @@ circle {
 body {
   color: white;
 }
+.Custom {
+  color: white;
+}
 h4.datum {
   margin-left: .33em;
   font-size: 3em;

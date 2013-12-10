@@ -3,3 +3,5 @@ dist/
 
 dist/osx/Unemployment Calculator.app/Contents/Resources/index.html
 *-ck.js
+packages/*
+dist/*
