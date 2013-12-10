@@ -3,10 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>index.html</string>
+	<string>JS/d3_class.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>CSS</string>
 			<key>regexFolderFilter</key>
@@ -40,7 +42,7 @@
 			<key>filename</key>
 			<string>test.db</string>
 			<key>lastUsed</key>
-			<date>2013-12-05T18:07:24Z</date>
+			<date>2013-12-09T18:11:18Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -52,9 +54,7 @@
 			<key>filename</key>
 			<string>index.html</string>
 			<key>lastUsed</key>
-			<date>2013-12-05T20:19:02Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2013-12-09T20:23:31Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -67,6 +67,20 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
+		<key>CSS/jquery-ui-custom.less</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>JS/AIRAliases.js</key>
 		<dict>
 			<key>caret</key>
@@ -109,6 +123,76 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>JS/d3_class.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>124</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>100</integer>
+		</dict>
+		<key>JS/d3_stuff.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>JS/data_sample.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>JS/db_functions-ck.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>JS/db_functions.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>27</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>5</integer>
+		</dict>
 		<key>JS/functions-ck.js</key>
 		<dict>
 			<key>caret</key>
@@ -123,14 +207,42 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>JS/jquery-ui-custom.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>index.html</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>59</integer>
+				<integer>51</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>29</integer>
+		</dict>
+		<key>test.db</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -141,12 +253,20 @@
 	<key>openDocuments</key>
 	<array>
 		<string>index.html</string>
+		<string>test.db</string>
+		<string>JS/data_sample.js</string>
+		<string>JS/db_functions-ck.js</string>
+		<string>JS/d3_stuff.js</string>
 		<string>JS/d3.v3.js</string>
 		<string>JS/d3_class-ck.js</string>
+		<string>JS/d3_class.js</string>
+		<string>JS/jquery-ui-custom.js</string>
+		<string>CSS/jquery-ui-custom.less</string>
+		<string>JS/db_functions.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{2127, 270}, {1070, 984}}</string>
+	<string>{{328, -909}, {1230, 874}}</string>
 </dict>
 </plist>
