@@ -119,12 +119,12 @@ Object.defineProperty(p, "baseline",{
 p.update = function(){			
 //	this.yScale.domain( d3.extent(this.data, function(d, i) { return parseFloat(d.value) }))
 	_base = this.base;
-	scaleMin = d3.max(this.data, function(d, i) { return Math.max( d.value, _base[i].value ) } );
-	scaleMax = 	d3.min(this.data, function(d, i) { return Math.min( d.value, _base[i].value ) } );
+	this.scaleMax = 	d3.max(this.data, function(d, i) { return Math.max( +d.value, +_base[i].value ) } );
 	this.yScale.domain( 
-		[scaleMax,scaleMin]
-		
-	)
+		[0,this.scaleMax]
+	//	d3.extent(this.base, function(d) { return +d.value}) 
+	//	d3.extent([0,this.scaleMax])
+		)
 	
 	
 	this.dScale.domain(d3.extent(this.data, function(d){
@@ -177,8 +177,15 @@ p.drawBase = function(){
 		//d.jsDate = new new Date(d.date);
 		return d.jsDate ;
 	}))
+	//scaleMin = d3.max(this.data, function(d, i) { return Math.max( +d.value, +_base[i].value ) } );
+/*		_base = this.base;
+		_data = this.data;
+	this.scaleMax = d3.max(_data, function(d, i) { return Math.max( +d.value, +_base[i].value ) } );
+	this.yScale.domain( 
 	
-	this.yScale.domain( d3.extent(this.base, function(d) { return parseFloat(d.value)}))
+		d3.extent(this.base, function(d) { return parseFloat(d.value)}) 
+	//	d3.extent([0,this.scaleMax])
+		) */
 	console.log("line function");
 	ds = this.dScale;
 	ys = this.yScale;
@@ -238,7 +245,7 @@ p.drawBase = function(){
 		.attr("x", -this.h/3)
 	    .attr("dy", ".75em")
 	   .attr("transform", "rotate(-90)")
-	    .text("(Percent)");
+	    .text("Unemployment Rate");
 	
 	//and axes, X axis
 	this.svg.select(".x.axis")

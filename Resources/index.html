@@ -115,7 +115,7 @@
 	//Listener on database class, called when new data is available
 	$(document).on("FRED", function(e){
 			OBS = e.observations; 
-		
+			EVF = e;
 			var h = "<h1>DATA:</h1>";
 			u.dataset = OBS;
 			colorUpdate(curIds.g);
