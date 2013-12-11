@@ -21,6 +21,9 @@ svg .line {
   stroke-width: 3px;
   stroke: white;
 }
+svg .line.default {
+  stroke: white;
+}
 svg .line.male {
   stroke: #2baeff;
 }
@@ -39,23 +42,6 @@ body {
 }
 .Custom {
   color: white;
-}
-h4.datum {
-  margin-left: .33em;
-  font-size: 3em;
-  display: inline;
-}
-h4.datum.base {
-  color: #ffb81c;
-}
-h4.datum.current {
-  color: white;
-}
-h4.datum.male {
-  color: #2baeff;
-}
-h4.datum.female {
-  color: #ff2b84;
 }
 h3.label {
   font-size: 1.5em;

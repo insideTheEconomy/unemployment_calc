@@ -26,6 +26,7 @@ svg .line {
   
   stroke-width: 3px;
 	stroke: white;
+	&.default{stroke:white;}
 	&.male{stroke: @lightblue}
 	&.female{stroke: @pink;}
 	&.base{stroke: @yellow;}
@@ -44,17 +45,6 @@ body{
 *{}
 .Custom{
 	color: white;
-}
-h4{
-	&.datum{
-		margin-left:.33em;
-		&.base{color: @yellow;}
-		&.current{color: white;}
-		&.male{color: @lightblue;}
-		&.female{color: @pink;}
-		font-size:3em;
-		display:inline;
-	}
 }
 h3{
 	&.label{

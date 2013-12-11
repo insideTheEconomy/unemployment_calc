@@ -23,7 +23,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	color:white;
+	color:white; 
 }
 
 html, body
@@ -212,7 +212,7 @@ html, body
 }
 .LabelBot.Edu {
 	top:625px;
-	left:43px;
+	left:37px;
 }
 .LabelBot.Age {
 	top:690px;
@@ -230,8 +230,10 @@ html, body
 	margin-top:13px;
 }
 .Percent.Custom {
-	color:#FFD469;
 	margin-top:-8px;
+}
+.Percent.Custom.default {
+	color:white;
 }
 .Percent.Custom.male {
 	color:#2BAEFF;
@@ -243,7 +245,7 @@ html, body
 #genderbtn {
 	position:absolute;
 	top:705px;
-	left:30px;
+	left:40px;
 	font-size:12px;
 }
 

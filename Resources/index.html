@@ -37,43 +37,14 @@
 </head>
 
 <body> 
-	
-	<div id = "buttonsets">
-		<form>
-			<div id="genderbtn"  category = "g" >
-				<input type="radio" _id = "1" id="g1" name="radio"><label for="g1"><img src="IMAGES/icon_male.png" width="17" height="36" alt="Icon Male"></label></input>
-				<input type="radio" _id = "2" id="g2" name="radio"><label for="g2"><img src="IMAGES/icon_female.png" width="17" height="36" alt="Icon Female"></label></input>
-			</div>
-		</form>
-		<form>
-			<div id="educationbtn"  category = "ed" >
-				<input type="radio" _id = "1" id="ed1" name="radio"><label for="ed1">No Degree</label></input>
-				<input type="radio" _id = "2" id="ed2" name="radio"><label for="ed2">Highschool</label></input>
-				<input type="radio" _id = "3" id="ed3" name="radio"><label for="ed3">Assoc. Occupational</label></input>
-				<input type="radio" _id = "4" id="ed4" name="radio"><label for="ed4">Assoc. Academic</label></input>
-				<input type="radio" _id = "5" id="ed5" name="radio"><label for="ed5">Bachelor's</label></input>
-				<input type="radio" _id = "6" id="ed6" name="radio"><label for="ed6">Master's</label></input>
-			</div>
-		</form>
-		<form>
-			<div id="agebtn" category = "ar" >
-				<input type="radio" _id = "1" id="ar4" name="radio"><label for="ar4">25 - 34</label></input>
-				<input type="radio" _id = "2" id="ar5" name="radio"><label for="ar5">35 - 44</label></input>
-				<input type="radio" _id = "3" id="ar6" name="radio"><label for="ar6">45 - 54</label></input>
-				<input type="radio" _id = "4" id="ar7" name="radio"><label for="ar7">55 - 64</label></input>
-				<input type="radio" _id = "5" id="ar8" name="radio"><label for="ar8">65 +</label></input>
-			</div>
-		</form>
-	</div>
-	
 	<div id="TopContainer">
 		<div id="TopLeft">
 			<p><img src="IMAGES/title.png" width="449" height="92" alt="Title"></p>
 			<h2>See how different characteristics relate </br> to unemployment in the United States.</h2>
 		</div>
 		<div id="TopRight">
-			<div class="LabelTop"><br/>National<br/>Average</div><div class="Percent National base datum">44.4%</div><br/><br/><br/><br/><div class="Percent Custom current datum">44.4%</div>
-			<div class="LabelTop">Gender : Age <br/> Degree Level</div>
+			<div class="LabelTop"><br/>National<br/>Average</div><div class="Percent National base datum"><span>44.4%</span></div><br/><br/><br/><br/><div class="Percent Custom default current datum"><span>44.4%</span></div>
+			<div class="LabelTop"><p class="customTitle">Gender : Age <br/> Degree Level</p></div>
 		</div>
 	</div>
 	
@@ -82,6 +53,34 @@
 	<p id = "result"></p>
 	
 	<div id="BotContainer">
+		<div id = "buttonsets">
+			<form>
+				<div id="genderbtn"  category = "g" >
+					<input type="radio" _id = "1" id="g1" name="radio"><label for="g1"><img src="IMAGES/icon_male.png"></label></input>
+					<input type="radio" _id = "2" id="g2" name="radio"><label for="g2"><img src="IMAGES/icon_female.png"></label></input>
+				</div>
+			</form>
+			<form>
+				<div id="educationbtn"  category = "ed" >
+					<input type="radio" _id = "1" id="ed1" name="radio"><label for="ed1">No Degree</label></input>
+					<input type="radio" _id = "2" id="ed2" name="radio"><label for="ed2">Highschool</label></input>
+					<input type="radio" _id = "3" id="ed3" name="radio"><label for="ed3">Assoc. Occupational</label></input>
+					<input type="radio" _id = "4" id="ed4" name="radio"><label for="ed4">Assoc. Academic</label></input>
+					<input type="radio" _id = "5" id="ed5" name="radio"><label for="ed5">Bachelor's</label></input>
+					<input type="radio" _id = "6" id="ed6" name="radio"><label for="ed6">Master's</label></input>
+				</div>
+			</form>
+			<form>
+				<div id="agebtn" category = "ar" >
+					<input type="radio" _id = "1" id="ar4" name="radio"><label for="ar4">25 - 34</label></input>
+					<input type="radio" _id = "2" id="ar5" name="radio"><label for="ar5">35 - 44</label></input>
+					<input type="radio" _id = "3" id="ar6" name="radio"><label for="ar6">45 - 54</label></input>
+					<input type="radio" _id = "4" id="ar7" name="radio"><label for="ar7">55 - 64</label></input>
+					<input type="radio" _id = "5" id="ar8" name="radio"><label for="ar8">65 +</label></input>
+				</div>
+			</form>
+		</div>
+		
 		<div id="BotLeft">
 			<div class="LabelGender">Gender</div>
 		</div>
@@ -118,7 +117,10 @@
 			EVF = e;
 			var h = "<h1>DATA:</h1>";
 			u.dataset = OBS;
-			colorUpdate(curIds.g);
+			colorUpdate(curIds.g); 
+			$(".customTitle").empty();
+			$(".customTitle").append(EVF.series.title.slice(19));
+			
 		});
 	//listener on unChart, called when slider moves.
 	$(document).on("SLIDER", function(e){
@@ -138,8 +140,10 @@
 	//neccessary bastard function to support gender stereotypes
 	var colorUpdate = function(id){
 			console.log("colorUpdate");
+			d3.select(".line.current").classed("default", (id == "0"));
 			d3.select(".line.current").classed("male", (id == "1"));
 			d3.select(".line.current").classed("female", (id == "2"));
+			$(".custom").toggleClass("default", (id == "0"));
 			$(".custom").toggleClass("male", (id == "1"));
 			$(".custom").toggleClass("female", (id == "2"));
 	}
