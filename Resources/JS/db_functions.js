@@ -24,11 +24,11 @@
 		rows = this.db.execute(q);
 		var obs = JSON.parse(rows.fieldByName("observations"));*/
 
-		obs = this.getData (ids);
-		if(obs){
+		obD = this.getData (ids);
+		if(obD){
 			$.event.trigger({
 						type: "FRED",
-						observations: obs,
+						observations: obD.obs,
 					});
 		}else{
 			$.event.trigger({
@@ -42,17 +42,19 @@
 	dbp.getData = function( ids ){
 		var q = "SELECT * FROM ser_data WHERE ser_data.ser_id = (SELECT series_id FROM ser_id WHERE g_id LIKE "+ids.g+" AND ed_id  LIKE "+ids.ed+" AND ar_id LIKE "+ids.ar+")"
 		this.rows = this.db.execute(q);
-		if(this.rows.rowCount() > 0){
-			var obs = JSON.parse(this.rows.fieldByName("observations"));
+		if(this.rows.rowCount() > 0){;
+			ret = {}
+			ret.obs = JSON.parse(this.rows.fieldByName("observations"));
+			ret.ser = JSON.parse(this.rows.fieldByName("series"));
 			console.log("ROWS :"+this.rows)
-			$.each(obs,function(i,v){
+			$.each(ret.obs,function(i,v){
 						console.log("adding dates")
 						str = v.date;
 						a = str.split("-");
 						var _d = new Date(a[0],a[1],a[2]);
 						v.jsDate = _d;
 				});
-				return obs;
+				return ret;
 		}else{
 			return false;
 		}
@@ -60,7 +62,10 @@
 	}
 	
 	Object.defineProperty(dbp, "baseline",{
-		get: function(){return this.getData( { "g" : 0, "ed" : 0, "ar" : 0  }) },
+		get: function(){
+			data = this.getData( { "g" : 0, "ed" : 0, "ar" : 0  });
+			ret = data.obs;
+			return ret },
 		set: function(ds){
 			this.data = ds;
 			console.log("DATASET RECEIVED");
