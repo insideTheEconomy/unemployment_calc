@@ -29,6 +29,7 @@
 			$.event.trigger({
 						type: "FRED",
 						observations: obD.obs,
+						series: obD.ser
 					});
 		}else{
 			$.event.trigger({
