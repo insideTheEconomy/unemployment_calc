@@ -103,7 +103,7 @@ Object.defineProperty(p, "dataset",{
 	get: function(){return this.data},
 	set: function(ds){
 		this.data = ds;
-		console.log("DATASET RECEIVED");
+		//console.log("DATASET RECEIVED");
 		this.update();
 		}});
 		
@@ -111,7 +111,7 @@ Object.defineProperty(p, "baseline",{
 	get: function(){return this.base},
 	set: function(bl){
 		this.base = bl;
-		console.log("DATASET RECEIVED");
+		//console.log("DATASET RECEIVED");
 		this.drawBase();
 		}});
 
@@ -158,6 +158,8 @@ p.update = function(){
 				.transition()
 		    	.duration(this.speed)
 				.attr("d", this.line);
+	
+
 				
 	$.event.trigger({
 				type: "SLIDER",
@@ -165,14 +167,16 @@ p.update = function(){
 				base: this.base[this.sliderValue]
 			}); 
 //	this.drawBase();
+
+	console.log("this.data[this.sliderValue].date")
 };
 
 p.drawBase = function(){
-	console.log("drawing Baseline");
+	//console.log("drawing Baseline");
 	
 	
 	//update domains
-	console.log("updating domains");
+	//console.log("updating domains");
 	this.dScale.domain(d3.extent(this.base, function(d,i){
 		//d.jsDate = new new Date(d.date);
 		return d.jsDate ;
@@ -186,7 +190,7 @@ p.drawBase = function(){
 		d3.extent(this.base, function(d) { return parseFloat(d.value)}) 
 	//	d3.extent([0,this.scaleMax])
 		) */
-	console.log("line function");
+	//console.log("line function");
 	ds = this.dScale;
 	ys = this.yScale;
 	this.line
@@ -208,7 +212,7 @@ p.drawBase = function(){
 		.call(this.yAxis);
 	
 	//Update Slider
-	console.log("Current Position : " + this.sliderValue);
+	//console.log("Current Position : " + this.sliderValue);
 	this.slide = d3.slider().min(0).max(this.base.length-1);
 	this.container.select(".d3-slider")
 		.remove();
@@ -218,6 +222,9 @@ p.drawBase = function(){
 	var sliderHandler = function(e, v){
 		
 		self.sliderValue = v;
+		self.dateBody.html("<h1>"+self.data[self.sliderValue].date+"</h1>");
+		var xDate = self.dScale(self.data[v].jsDate);
+		self.date.transition().attr("x", xDate);
 		$.event.trigger({
 					type: "SLIDER",
 					observation: self.data[v],
@@ -266,6 +273,16 @@ p.drawBase = function(){
 				.transition()
 		    	.duration(this.speed)
 				.attr("d", this.line);	
+	
+	this.date = this.chartBody.append("foreignObject")
+		.attr({
+			"width":"220",
+			"height":"100",
+			"x":"220","y":"220",
+			"style":"color:white"
+		})
+	this.dateBody = this.date.append("xhtml:body").attr("class","foreign")
+			    
 };
 
 
