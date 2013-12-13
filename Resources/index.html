@@ -63,11 +63,12 @@
 			<form>
 				<div id="educationbtn"  category = "ed" >
 					<input type="radio" _id = "1" id="ed1" name="radio"><label for="ed1">No Degree</label></input>
-					<input type="radio" _id = "2" id="ed2" name="radio"><label for="ed2">Highschool</label></input>
+					<input type="radio" _id = "2" id="ed2" name="radio"><label for="ed2">High School</label></input>
 					<input type="radio" _id = "3" id="ed3" name="radio"><label for="ed3">Assoc. Occupational</label></input>
 					<input type="radio" _id = "4" id="ed4" name="radio"><label for="ed4">Assoc. Academic</label></input>
 					<input type="radio" _id = "5" id="ed5" name="radio"><label for="ed5">Bachelor's</label></input>
 					<input type="radio" _id = "6" id="ed6" name="radio"><label for="ed6">Master's</label></input>
+					<input type="radio" _id = "7" id="ed7" name="radio"><label for="ed7">Ph.D</label></input>
 				</div>
 			</form>
 			<form>
@@ -81,15 +82,9 @@
 			</form>
 		</div>
 		
-		<div id="BotLeft">
-			<div class="LabelGender">Gender</div>
-		</div>
-		
-		<div id="BotRight">
-			<div class="LabelBot Edu">Education</div>
-			<br/><br/><br/><br/><br/><br/>
-			<div class="LabelBot Age">Age</div>
-		</div>
+		<div class="LabelGender">Gender</div>
+		<div class="LabelBot Edu">Education</div>
+		<div class="LabelBot Age">Age</div>
 	</div>
 </body> 
 
@@ -135,7 +130,7 @@
 			console.log(e.ids);
 			curIds = e.ids;
 			db.queryByIds(e.ids);
-		})  //add an event listener, fired each time a button is clicked.
+		});  //add an event listener, fired each time a button is clicked.
 	
 	//neccessary bastard function to support gender stereotypes
 	var colorUpdate = function(id){

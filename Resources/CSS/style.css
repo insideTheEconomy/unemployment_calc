@@ -184,6 +184,9 @@ html, body
 	font-size:18px;
 }
 .LabelGender {
+	top:602px;
+	left:-400px;
+	position:absolute;
 	height:30px;
 	width:50%;
 	float:left;
@@ -191,8 +194,6 @@ html, body
 	text-align:right;
 	font-family: "label";
 	color:white;
-	margin-left:39px;
-	margin-top:-10px;
 	text-shadow: 3px 3px 2px #4d4d4d;
 	pointer-events:none;
 }
@@ -211,11 +212,11 @@ html, body
 	left:30px;
 }
 .LabelBot.Edu {
-	top:625px;
-	left:37px;
+	top:688px;
+	left:18px;
 }
 .LabelBot.Age {
-	top:690px;
+	top:602px;
 	left:175px;
 }
 .Percent {
@@ -244,22 +245,22 @@ html, body
 
 #genderbtn {
 	position:absolute;
-	top:705px;
-	left:40px;
+	top:631px;
+	left:18px;
 	font-size:12px;
 }
 
 #agebtn {
 	position:absolute;
-	top:688px;
-	left:236px;
+	top:633px;
+	left:170px;
 	font-size:12px;
 }
 
 #educationbtn {
 	position:absolute;
-	top:624px;
-	left:180px;
+	top:720px;
+	left:15px;
 	font-size:11px;
 }
 
