@@ -7,7 +7,7 @@
   stroke: white;
 }
 svg text {
-  font-family: sans-serif;
+  font-family: "label";
   fill: white;
 }
 .axis text {
@@ -39,6 +39,34 @@ circle {
 }
 body {
   color: white;
+}
+.dateBody {
+  width: 999px;
+}
+.foreign {
+  width: auto;
+  height: auto;
+}
+.foreign h1 {
+  text-shadow: 2px 2px 2px #000000, -2px -2px 2px #000000, -2px 0 2px #000000;
+  line-height: 30px;
+  font-size: 1em;
+  font-family: "label";
+  background-color: none;
+  width: auto;
+  height: auto;
+}
+.foreign h1.right {
+  margin-left: 150px;
+}
+.foreign h1.right:before {
+  content: "\2190";
+}
+.foreign h1.left {
+  margin-left: 0;
+}
+.foreign h1.left:after {
+  content: "\2192";
 }
 .Custom {
   color: white;

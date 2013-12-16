@@ -10,7 +10,7 @@
 }
 
 svg text {
-	font-family: sans-serif;
+	font-family: "label";
 	fill: white;
 }
 
@@ -38,7 +38,36 @@ circle{
 	stroke:grey;
 }
 body{
-	color: white;
+	color: white; 
+}
+
+.dateBody{
+	width:999px;
+}
+
+.foreign {
+	width: auto;
+	height: auto;
+		& h1 {
+		text-shadow: 2px 2px  2px black, -2px -2px  2px black, -2px 0 2px black;
+		line-height:30px;
+		font-size: 1em;
+		font-family: "label";
+		background-color:none;
+		width: auto;
+		height: auto;
+			&.right{
+				margin-left:150px;
+			&:before{
+				content : "\2190";
+			}}
+			
+			&.left{
+				margin-left:0;
+			&:after{
+				content : "\2192";
+			}}
+	}
 }
 
 //TEXT

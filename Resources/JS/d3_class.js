@@ -158,39 +158,22 @@ p.update = function(){
 				.transition()
 		    	.duration(this.speed)
 				.attr("d", this.line);
-	
-
-				
+			
 	$.event.trigger({
 				type: "SLIDER",
 				observation: this.data[this.sliderValue],
 				base: this.base[this.sliderValue]
 			}); 
-//	this.drawBase();
-
+			
 	console.log("this.data[this.sliderValue].date")
 };
 
 p.drawBase = function(){
-	//console.log("drawing Baseline");
-	
-	
-	//update domains
-	//console.log("updating domains");
+
 	this.dScale.domain(d3.extent(this.base, function(d,i){
-		//d.jsDate = new new Date(d.date);
 		return d.jsDate ;
 	}))
-	//scaleMin = d3.max(this.data, function(d, i) { return Math.max( +d.value, +_base[i].value ) } );
-/*		_base = this.base;
-		_data = this.data;
-	this.scaleMax = d3.max(_data, function(d, i) { return Math.max( +d.value, +_base[i].value ) } );
-	this.yScale.domain( 
-	
-		d3.extent(this.base, function(d) { return parseFloat(d.value)}) 
-	//	d3.extent([0,this.scaleMax])
-		) */
-	//console.log("line function");
+
 	ds = this.dScale;
 	ys = this.yScale;
 	this.line
@@ -222,9 +205,22 @@ p.drawBase = function(){
 	var sliderHandler = function(e, v){
 		
 		self.sliderValue = v;
-		self.dateBody.html("<h1>"+self.data[self.sliderValue].date+"</h1>");
+		var dateClass;
+		var sliderMid = self.slide.max()/2;
+		
+		if ( self.sliderValue >=  sliderMid) {
+				dateClass = "left";
+			}
+			else{
+				dateClass ="right";
+			}
+		
+		self.dateBody.html("<h1 class='"+dateClass+"'>"+self.data[self.sliderValue].jsDate.toLocaleDateString()+"</h1>");
+		
 		var xDate = self.dScale(self.data[v].jsDate);
-		self.date.transition().attr("x", xDate);
+		var yDate = self.yScale(self.data[v].value);
+		self.date.transition().duration(250).attr("x", xDate-150).attr("y", yDate-15);
+		
 		$.event.trigger({
 					type: "SLIDER",
 					observation: self.data[v],
@@ -276,8 +272,8 @@ p.drawBase = function(){
 	
 	this.date = this.chartBody.append("foreignObject")
 		.attr({
-			"width":"220",
-			"height":"100",
+			"width":"300px",
+			"height":"30px",
 			"x":"220","y":"220",
 			"style":"color:white"
 		})

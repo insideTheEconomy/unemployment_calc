@@ -26,11 +26,10 @@
 	color:white; 
 }
 
-html, body
+body
 {
 	width: 1024px;
 	height: 768px;
-	background-color:black;
 	background-repeat:no-repeat;
 	background-image:url("../IMAGES/UnemploymentBG.jpg");
 	overflow:hidden;
