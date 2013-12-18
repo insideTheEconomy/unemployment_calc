@@ -158,14 +158,14 @@ p.update = function(){
 				.transition()
 		    	.duration(this.speed)
 				.attr("d", this.line);
-			
+	
+	this.sliderHandler(null, this.sliderValue);
 	$.event.trigger({
 				type: "SLIDER",
 				observation: this.data[this.sliderValue],
 				base: this.base[this.sliderValue]
 			}); 
 			
-	console.log("this.data[this.sliderValue].date")
 };
 
 p.drawBase = function(){
@@ -202,7 +202,7 @@ p.drawBase = function(){
 		
 	var self = this;
 	
-	var sliderHandler = function(e, v){
+	this.sliderHandler = function(e, v){
 		
 		self.sliderValue = v;
 		var dateClass;
@@ -220,7 +220,6 @@ p.drawBase = function(){
 		var xDate = self.dScale(self.data[v].jsDate);
 		var yDate = self.yScale(self.data[v].value);
 		self.date.transition().duration(250).attr("x", xDate-150).attr("y", yDate-15);
-		
 		$.event.trigger({
 					type: "SLIDER",
 					observation: self.data[v],
@@ -234,7 +233,7 @@ p.drawBase = function(){
 			width:this.innerWidth, 
 			"margin-left":this.padding.left-1
 			}).call(this.slide.value(this.sliderValue));
-			this.slide.on("slide", sliderHandler);
+			this.slide.on("slide", self.sliderHandler);
 	var handle = this.container.select(".d3-slider-handle")
 	
 	handle.append("div").attr("class","arrow left");
