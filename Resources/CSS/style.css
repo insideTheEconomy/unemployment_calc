@@ -2,21 +2,34 @@
 
 /*- Style Sheet for Life Saving -*/
 
-
-/*- Font Definitions -*/
 @font-face {
-  font-family: "title";
-  src: url("../FONTS/Linotype - UniversLTPro-UltraCondensed.otf") format("opentype");
+    font-family: 'label';
+    src: url('../FONTS/gothamrnd-book-webfont.eot');
+    src: url('../FONTS/gothamrnd-book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../FONTS/gothamrnd-book-webfont.woff') format('woff'),
+         url('../FONTS/gothamrnd-book-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "sub-title";
-  src: url("../FONTS/GothamRnd-Light.otf") format("opentype");
+    font-family: 'sub-title';
+    src: url('../FONTS/gothamrnd-light-webfont.eot');
+    src: url('../FONTS/gothamrnd-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../FONTS/gothamrnd-light-webfont.woff') format('woff'),
+         url('../FONTS/gothamrnd-light-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "label";
-  src: url("../FONTS/GothamRnd-Book.otf") format("opentype");
+    font-family: 'title';
+    src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.eot');
+    src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.woff') format('woff'),
+         url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /*- Overall Page Formatting -*/
