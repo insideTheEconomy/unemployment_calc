@@ -219,7 +219,13 @@ p.drawBase = function(){
 		
 		var xDate = self.dScale(self.data[v].jsDate);
 		var yDate = self.yScale(self.data[v].value);
-		self.date.transition().duration(250).attr("x", xDate-150).attr("y", yDate-15);
+		self.date.transition().duration(60)
+			.attr("y", yDate-15)
+			.style("opacity",0)
+			.transition().duration(150).attr("x", xDate-150)
+			.style("opacity",1);
+		
+		
 		$.event.trigger({
 					type: "SLIDER",
 					observation: self.data[v],
