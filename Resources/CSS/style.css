@@ -184,7 +184,7 @@ body
 }
 .LabelGender {
 	top:602px;
-	left:-400px;
+	left:-360px;
 	position:absolute;
 	height:30px;
 	width:50%;
@@ -216,7 +216,7 @@ body
 }
 .LabelBot.Age {
 	top:602px;
-	left:175px;
+	left:280px;
 }
 .Percent {
 	float:right;
@@ -245,14 +245,14 @@ body
 #genderbtn {
 	position:absolute;
 	top:631px;
-	left:18px;
+	left:60px;
 	font-size:12px;
 }
 
 #agebtn {
 	position:absolute;
 	top:633px;
-	left:170px;
+	left:280px;
 	font-size:12px;
 }
 
