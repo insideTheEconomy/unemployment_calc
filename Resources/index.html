@@ -57,28 +57,28 @@
 		<div id = "buttonsets">
 			<form>
 				<div id="genderbtn"  category = "g" >
-					<input type="radio" _id = "1" id="g1" name="radio"><label for="g1"><img src="IMAGES/icon_male.png"></label></input>
-					<input type="radio" _id = "2" id="g2" name="radio"><label for="g2"><img src="IMAGES/icon_female.png"></label></input>
+					<input type="radio" _id = "1" id="g1" name="radio" labelname = "Male"><label for="g1"><img src="IMAGES/icon_male.png"></label></input>
+					<input type="radio" _id = "2" id="g2" name="radio" labelname = "Female"><label for="g2"><img src="IMAGES/icon_female.png"></label></input>
 				</div>
 			</form>
 			<form>
 				<div id="educationbtn"  category = "ed" >
-					<input type="radio" _id = "1" id="ed1" name="radio"><label for="ed1">No Degree</label></input>
-					<input type="radio" _id = "2" id="ed2" name="radio"><label for="ed2">High School</label></input>
-					<input type="radio" _id = "3" id="ed3" name="radio"><label for="ed3">Assoc. Occupational</label></input>
-					<input type="radio" _id = "4" id="ed4" name="radio"><label for="ed4">Assoc. Academic</label></input>
-					<input type="radio" _id = "5" id="ed5" name="radio"><label for="ed5">Bachelor's</label></input>
-					<input type="radio" _id = "6" id="ed6" name="radio"><label for="ed6">Master's</label></input>
-					<input type="radio" _id = "7" id="ed7" name="radio"><label for="ed7">Ph.D</label></input>
+					<input type="radio" _id = "1" id="ed1" name="radio" labelname = "Ed1"><label for="ed1">No Degree</label></input>
+					<input type="radio" _id = "2" id="ed2" name="radio" labelname = "Ed2"><label for="ed2">High School</label></input>
+					<input type="radio" _id = "3" id="ed3" name="radio" labelname = "Ed3"><label for="ed3">Assoc. Occupational</label></input>
+					<input type="radio" _id = "4" id="ed4" name="radio" labelname = "Ed4"><label for="ed4">Assoc. Academic</label></input>
+					<input type="radio" _id = "5" id="ed5" name="radio" labelname = "Ed5"><label for="ed5">Bachelor's</label></input>
+					<input type="radio" _id = "6" id="ed6" name="radio" labelname = "Ed6"><label for="ed6">Master's</label></input>
+					<input type="radio" _id = "7" id="ed7" name="radio" labelname = "Ed7"><label for="ed7">Ph.D</label></input>
 				</div>
 			</form>
 			<form>
 				<div id="agebtn" category = "ar" >
-					<input type="radio" _id = "1" id="ar4" name="radio"><label for="ar4">25 - 34</label></input>
-					<input type="radio" _id = "2" id="ar5" name="radio"><label for="ar5">35 - 44</label></input>
-					<input type="radio" _id = "3" id="ar6" name="radio"><label for="ar6">45 - 54</label></input>
-					<input type="radio" _id = "4" id="ar7" name="radio"><label for="ar7">55 - 64</label></input>
-					<input type="radio" _id = "5" id="ar8" name="radio"><label for="ar8">65 +</label></input>
+					<input type="radio" _id = "1" id="ar4" name="radio" labelname = "age1"><label for="ar4">25 - 34</label></input>
+					<input type="radio" _id = "2" id="ar5" name="radio" labelname = "age2"><label for="ar5">35 - 44</label></input>
+					<input type="radio" _id = "3" id="ar6" name="radio" labelname = "age3"><label for="ar6">45 - 54</label></input>
+					<input type="radio" _id = "4" id="ar7" name="radio" labelname = "age4"><label for="ar7">55 - 64</label></input>
+					<input type="radio" _id = "5" id="ar8" name="radio" labelname = "age5"><label for="ar8">65 +</label></input>
 				</div>
 			</form>
 		</div>
@@ -127,14 +127,19 @@
 		});
 		
 	$(document).on("BUTTON", function(e){
-			console.log(e.ids);
+			//console.log(e.ids);
 			curIds = e.ids;
 			db.queryByIds(e.ids);
 		});  //add an event listener, fired each time a button is clicked.
+		
+		$(document).on("LABEL", function(e){
+				//console.log(e.ids);
+				console.log(e);
+			});
 	
 	//neccessary bastard function to support gender stereotypes
 	var colorUpdate = function(id){
-			console.log("colorUpdate");
+			//console.log("colorUpdate");
 			d3.select(".line.current").classed("default", (id == "0"));
 			d3.select(".line.current").classed("male", (id == "1"));
 			d3.select(".line.current").classed("female", (id == "2"));

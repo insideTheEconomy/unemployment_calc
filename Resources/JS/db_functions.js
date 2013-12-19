@@ -1,4 +1,4 @@
-	console.log("Functions Loaded")
+	//console.log("Functions Loaded")
 
 	function DBConnector () {
 		this.rows;
@@ -11,7 +11,7 @@
 	
 	dbp.open = function(){
 		this.openHandler = function(e){
-			console.log("openHandler");
+			//console.log("openHandler");
 		}
 		this.folder = Ti.Filesystem.getResourcesDirectory();
 		this.dbFile = this.folder.resolve(this.dbname);
@@ -47,9 +47,9 @@
 			ret = {}
 			ret.obs = JSON.parse(this.rows.fieldByName("observations"));
 			ret.ser = JSON.parse(this.rows.fieldByName("series"));
-			console.log("ROWS :"+this.rows)
+			//console.log("ROWS :"+this.rows)
 			$.each(ret.obs,function(i,v){
-						console.log("adding dates")
+						//console.log("adding dates")
 						str = v.date;
 						a = str.split("-");
 						var _d = new Date(a[0],a[1],a[2]);
@@ -69,7 +69,7 @@
 			return ret },
 		set: function(ds){
 			this.data = ds;
-			console.log("DATASET RECEIVED");
+			//console.log("DATASET RECEIVED");
 			this.update();
 			}});
 	
