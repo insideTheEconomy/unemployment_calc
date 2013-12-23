@@ -253,7 +253,7 @@ button.ui-button::-moz-focus-inner {
   background: #10069f;
   font-weight: normal;
   color: #fff;
-  box-shadow: inset 0px 0px 6px white !important;
+  -webkit-box-shadow: inset 0px 0px 6px white !important;
 }
 .ui-state-active a,
 .ui-state-active a:link,
@@ -876,13 +876,13 @@ button.ui-button::-moz-focus-inner {
 /* Misc visuals
 ----------------------------------*/
 .ui-button {
-  box-shadow: inset 0px 9px 9px -6px #10069f, inset 0px -9px 9px -6px #10069f;
+  -webkit-box-shadow: inset 0px 9px 9px -6px #10069f, inset 0px -9px 9px -6px #10069f;
 }
 .ui-corner-left {
-  box-shadow: inset 0px 9px 9px -6px #10069f, inset 0px -9px 9px -6px #10069f, inset 9px 0px 9px -6px #10069f;
+  -webkit-box-shadow: inset 0px 9px 9px -6px #10069f, inset 0px -9px 9px -6px #10069f, inset 9px 0px 9px -6px #10069f;
 }
 .ui-corner-right {
-  box-shadow: inset 0px 9px 9px -6px #10069f, inset 0px -9px 9px -6px #10069f, inset -9px 0px 9px -6px #10069f;
+  -webkit-box-shadow: inset 0px 9px 9px -6px #10069f, inset 0px -9px 9px -6px #10069f, inset -9px 0px 9px -6px #10069f;
 }
 /* Corner radius */
 .ui-corner-all,
