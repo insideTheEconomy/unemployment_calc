@@ -56,13 +56,16 @@ qbP.bind = function ( sel ){
 					});
 		}
 		var dataLabel = "";
+		var _labels = {};
 		self.$btns.find("input:checked").each(function(){
+			_labels[$(this).parent().attr("category")] = $(this).attr("labelname");
 			dataLabel += $(this).attr("labelname");
 			dataLabel += "<br>";
 		})
 		$.event.trigger({
 					type: "LABEL",
-					text: dataLabel
+					text: dataLabel,
+					labels: _labels
 				});
 	}
 	
