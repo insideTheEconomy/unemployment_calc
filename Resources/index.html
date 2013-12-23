@@ -131,9 +131,10 @@
 			curIds = e.ids;
 			db.queryByIds(e.ids);
 		});  //add an event listener, fired each time a button is clicked.
-		
+		var LEV;
 		$(document).on("LABEL", function(e){
 				//console.log(e.ids);
+				LEV = e.labels;
 				console.log(e);
 			});
 	
