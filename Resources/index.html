@@ -44,8 +44,14 @@
 			<h2>See how different characteristics relate </br> to unemployment in the United States.</h2>
 		</div>
 		<div id="TopRight">
-			<div class="LabelTop"><br/>National<br/>Average</div><div class="Percent National base datum"><span>44.4%</span></div><br/><br/><br/><br/><div class="Percent Custom default current datum"><span>44.4%</span></div>
-			<div class="LabelTop"><p class="customTitle">Gender : Age <br/> Degree Level</p></div>
+				<div class = "labelLine">
+					<p class = "datumTitle">National<br/>Average</p>
+					<span class="Percent National base datum">44.4</span>
+				</div>	
+				<div class = "labelLine">
+					<p class="datumTitle custom">Gender : Age <br/> Degree Level</p>
+					<span class="Percent Custom default current datum">44.4</span>
+				</div>	
 		</div>
 	</div>
 	
@@ -63,12 +69,12 @@
 			</form>
 			<form>
 				<div id="educationbtn"  category = "ed" >
-					<input type="radio" _id = "1" id="ed1" name="radio" labelname = "No Degree"><label for="ed1">No Degree</label></input>
-					<input type="radio" _id = "2" id="ed2" name="radio" labelname = "High School"><label for="ed2">High School</label></input>
-					<input type="radio" _id = "3" id="ed3" name="radio" labelname = "Associate Occupational"><label for="ed3">Assoc. Occupational</label></input>
-					<input type="radio" _id = "4" id="ed4" name="radio" labelname = "Associate Academic"><label for="ed4">Assoc. Academic</label></input>
-					<input type="radio" _id = "5" id="ed5" name="radio" labelname = "Bachelor's"><label for="ed5">Bachelor's</label></input>
-					<input type="radio" _id = "6" id="ed6" name="radio" labelname = "Master's"><label for="ed6">Master's</label></input>
+					<input type="radio" _id = "1" id="ed1" name="radio" labelname = "No Degree or Diploma"><label for="ed1">No Degree</label></input>
+					<input type="radio" _id = "2" id="ed2" name="radio" labelname = "High School Diploma"><label for="ed2">High School</label></input>
+					<input type="radio" _id = "3" id="ed3" name="radio" labelname = "Associate's Degree - Occupational"><label for="ed3">Assoc. Occupational</label></input>
+					<input type="radio" _id = "4" id="ed4" name="radio" labelname = "Associate's Degree - Academic"><label for="ed4">Assoc. Academic</label></input>
+					<input type="radio" _id = "5" id="ed5" name="radio" labelname = "Bachelor's Degree"><label for="ed5">Bachelor's</label></input>
+					<input type="radio" _id = "6" id="ed6" name="radio" labelname = "Master's Degree"><label for="ed6">Master's</label></input>
 					<input type="radio" _id = "7" id="ed7" name="radio" labelname = "Ph.D"><label for="ed7">Ph.D</label></input>
 				</div>
 			</form>
@@ -122,8 +128,8 @@
 			EV = e;
 			OB = e.observation;
 			B = e.base;
-			$(".current.datum").text(OB.value + "%");
-			$(".base.datum").text(B.value + "%");
+			$(".current.datum").text(OB.value);
+			$(".base.datum").text(B.value);
 		});
 		
 	$(document).on("BUTTON", function(e){
@@ -136,8 +142,7 @@
 				//console.log(e.ids);
 				LEV = e.labels;
 				console.log(e);
-				$(".customTitle").empty();
-				$(".customTitle").append(e.text);
+				$(".datumTitle.custom").empty().append(e.text);
 				console.log(e.text);
 			});
 	

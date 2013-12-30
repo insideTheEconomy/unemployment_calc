@@ -1,281 +1,274 @@
-
-
 /*- Style Sheet for Life Saving -*/
-
 @font-face {
-    font-family: 'label';
-    src: url('../FONTS/gothamrnd-book-webfont.eot');
-    src: url('../FONTS/gothamrnd-book-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../FONTS/gothamrnd-book-webfont.woff') format('woff'),
-         url('../FONTS/gothamrnd-book-webfont.ttf') format('truetype');
+  font-family: 'label';
+  src: url('../FONTS/gothamrnd-book-webfont.eot');
+  src: url('../FONTS/gothamrnd-book-webfont.eot?#iefix') format('embedded-opentype'), url('../FONTS/gothamrnd-book-webfont.woff') format('woff'), url('../FONTS/gothamrnd-book-webfont.ttf') format('truetype');
 }
-
 @font-face {
-    font-family: 'sub-title';
-    src: url('../FONTS/gothamrnd-light-webfont.eot');
-    src: url('../FONTS/gothamrnd-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../FONTS/gothamrnd-light-webfont.woff') format('woff'),
-         url('../FONTS/gothamrnd-light-webfont.ttf') format('truetype');
+  font-family: 'sub-title';
+  src: url('../FONTS/gothamrnd-light-webfont.eot');
+  src: url('../FONTS/gothamrnd-light-webfont.eot?#iefix') format('embedded-opentype'), url('../FONTS/gothamrnd-light-webfont.woff') format('woff'), url('../FONTS/gothamrnd-light-webfont.ttf') format('truetype');
 }
-
 @font-face {
-    font-family: 'title';
-    src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.eot');
-    src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.woff') format('woff'),
-         url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.ttf') format('truetype');
+  font-family: 'title';
+  src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.eot');
+  src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.eot?#iefix') format('embedded-opentype'), url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.woff') format('woff'), url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.ttf') format('truetype');
 }
-
 /*- Overall Page Formatting -*/
 * {
-	margin: 0;
-	padding: 0;
-	color:white; 
+  margin: 0;
+  padding: 0;
+  color: white;
 }
-
-body
-{
-	width: 1024px;
-	height: 768px;
-	background-repeat:no-repeat;
-	background-image:url("../IMAGES/UnemploymentBG.jpg");
-	overflow:hidden;
+body {
+  width: 1024px;
+  height: 768px;
+  background-repeat: no-repeat;
+  background-image: url("../IMAGES/UnemploymentBG.jpg");
+  overflow: hidden;
 }
-
-.hidden
-{
-	display:none;
+.hidden {
+  display: none;
 }
-
 /*- - -*/
-
 #TopContainer {
-	background-color:transparent;
-	width:1024px;
-	height:175px;
+  background-color: transparent;
+  width: 1024px;
+  height: 175px;
 }
 #TopLeft {
-	width:50%;
-	height:100%;
-	float:left;
+  width: 50%;
+  height: 100%;
+  float: left;
 }
 #TopLeft p {
-	margin-top:20px;
-	color:#a3d9e6;
-	text-align:center;
-	font-size:63px;
-	font-family:"title";
+  margin-top: 20px;
+  color: #a3d9e6;
+  text-align: center;
+  font-size: 63px;
+  font-family: "title";
 }
 #TopLeft H2 {
-	margin-top:-25px;
-	color:white;
-	text-align:center;
-	font-size:19px;
-	font-family: "sub-title";
+  margin-top: -25px;
+  color: white;
+  text-align: center;
+  font-size: 19px;
+  font-family: "sub-title";
 }
-
 #TopRight {
-	width:50%;
-	height:100%;
-	float:right;
+  width: 50%;
+  height: 100%;
+  float: right;
 }
-
 #MidContainer {
-	background-color:transparent;
-	width:auto;
-	height:auto;
+  background-color: transparent;
+  width: auto;
+  height: auto;
 }
 #MidContainer img {
-	display: block;
-	position:relative;
-	margin-left: auto;
-	margin-right: auto;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 #BotContainer {
-	background-color:transparent;
-	width:1024px;
-	height:168px;
+  background-color: transparent;
+  width: 1024px;
+  height: 168px;
 }
 #BotLeft {
-	background-color:transparent;
-	width:165px;
-	height:50%;
-	float:left;
-	margin-top:84px;
+  background-color: transparent;
+  width: 165px;
+  height: 50%;
+  float: left;
+  margin-top: 84px;
 }
-
 .Gender {
-	width:38px;
-	height:38px;
-	border: 2px solid #505a7d;
-	border-radius: 5px;
-	-webkit-box-shadow: 0px 0px 10px #a8d0f7, inset 0px 0px 4px #6d8294;
-	background-image: -webkit-linear-gradient(top, #111111, #171717);
-	background-image: linear-gradient(top, #111111, #171717);
-	background-clip: padding-box;
-	float:left;
-	margin-left:10px;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #505a7d;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px #a8d0f7, inset 0px 0px 4px #6d8294;
+  background-image: -webkit-linear-gradient(top, #111111, #171717);
+  background-image: linear-gradient(top, #111111, #171717);
+  background-clip: padding-box;
+  float: left;
+  margin-left: 10px;
 }
 .Gender.Female {
-	margin-left:22px;
-}
-.Gender.Male {
-	
+  margin-left: 22px;
 }
 .Gender.Female.Active {
-	border: 2px solid #999999;
-	background-image: -webkit-linear-gradient(top, #632d31, #421012);
-	background-image: linear-gradient(top, #632d31, #421012);
+  border: 2px solid #999999;
+  background-image: -webkit-linear-gradient(top, #632d31, #421012);
+  background-image: linear-gradient(top, #632d31, #421012);
 }
 .Gender.Male.Active {
-	border: 2px solid #999999;
-	background-image: -webkit-linear-gradient(top, #698f96, #103840);
-	background-image: linear-gradient(top, #698f96, #103840);
+  border: 2px solid #999999;
+  background-image: -webkit-linear-gradient(top, #698f96, #103840);
+  background-image: linear-gradient(top, #698f96, #103840);
 }
-
 #BotRight {
-	background-color:transparent;
-	height:100%;
-	width:859px;
-	left:165px;
-	float:right;
+  background-color: transparent;
+  height: 100%;
+  width: 859px;
+  left: 165px;
+  float: right;
 }
 .EduHolder {
-	width:665px;
-	height:30px;
-	border: 2px solid #999999;
-	border-radius: 5px;
-	-webkit-box-shadow: 0px 0px 5px white, inset 0 0 15px #415078;
-	background-image: -webkit-linear-gradient(top, #111111, #171717);
-	background-image: linear-gradient(top, #111111, #171717);
-	background-clip: padding-box;
-	float:right;
-	margin-right:40px;
-	margin-top:22px;
-	color:white;
-	text-align:center;
-	font-size:20px;
-	font-family: "sub-title";
-	padding-top:8px;
+  width: 665px;
+  height: 30px;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px white, inset 0 0 15px #415078;
+  background-image: -webkit-linear-gradient(top, #111111, #171717);
+  background-image: linear-gradient(top, #111111, #171717);
+  background-clip: padding-box;
+  float: right;
+  margin-right: 40px;
+  margin-top: 22px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-family: "sub-title";
+  padding-top: 8px;
 }
 .AgeHolder {
-	width:665px;
-	height:32px;
-	border: 2px solid #999999;
-	border-radius: 5px;
-	-webkit-box-shadow: 0px 0px 5px white, inset 0 0 15px #415078;
-	background-image: -webkit-linear-gradient(top, #111111, #171717);
-	background-image: linear-gradient(top, #111111, #171717);
-	background-clip: padding-box;
-	float:right;
-	margin-right:115px;
-	margin-top:-38px;
-	color:white;
-	text-align:center;
-	font-size:20px;
-	font-family: "sub-title";
-	padding-top:8px;
+  width: 665px;
+  height: 32px;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px white, inset 0 0 15px #415078;
+  background-image: -webkit-linear-gradient(top, #111111, #171717);
+  background-image: linear-gradient(top, #111111, #171717);
+  background-clip: padding-box;
+  float: right;
+  margin-right: 115px;
+  margin-top: -38px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-family: "sub-title";
+  padding-top: 8px;
 }
-
 /*- General Formatting -*/
 .LabelTop {
-	height:100px;
-	width:50%;
-	float:left;
-	text-align:right;
-	font-family: "label";
-	color:white;
-	text-shadow: 3px 3px 2px #4d4d4d;
-	font-size:18px;
+  height: 100px;
+  width: 50%;
+  float: left;
+  text-align: right;
+  font-family: "label";
+  color: white;
+  text-shadow: 3px 3px 2px #4d4d4d;
+  font-size: 18px;
 }
 .LabelGender {
-	top:602px;
-	left:-360px;
-	position:absolute;
-	height:30px;
-	width:50%;
-	float:left;
-	font-size:26px;
-	text-align:right;
-	font-family: "label";
-	color:white;
-	text-shadow: 3px 3px 2px #4d4d4d;
-	pointer-events:none;
+  top: 602px;
+  left: -360px;
+  position: absolute;
+  height: 30px;
+  width: 50%;
+  float: left;
+  font-size: 26px;
+  text-align: right;
+  font-family: "label";
+  color: white;
+  text-shadow: 3px 3px 2px #4d4d4d;
+  pointer-events: none;
 }
 .LabelBot {
-	position:absolute;
-	pointer-events:none;
-	height:50%;
-	width:75px;
-	text-align:left;
-	font-family: "label";
-	font-size:26px;
-	color:white;
-	text-shadow: 3px 3px 2px #4d4d4d;
-	float:left;
-	top:-200px;
-	left:30px;
+  position: absolute;
+  pointer-events: none;
+  height: 50%;
+  width: 75px;
+  text-align: left;
+  font-family: "label";
+  font-size: 26px;
+  color: white;
+  text-shadow: 3px 3px 2px #4d4d4d;
+  float: left;
+  top: -200px;
+  left: 30px;
 }
 .LabelBot.Edu {
-	top:688px;
-	left:63px;
+  top: 688px;
+  left: 63px;
 }
 .LabelBot.Age {
-	top:602px;
-	left:280px;
+  top: 602px;
+  left: 280px;
 }
 .Percent {
-	float:right;
-	margin-right:50px;
-	text-align:left;
-	font-size:64px;
-	font-family: "label";
+  float: right;
+  margin-right: 50px;
+  text-align: left;
+  font-size: 64px;
+  font-family: "label";
 }
 .Percent.National {
-	color:#ebb52f;
-	margin-top:13px;
-}
-.Percent.Custom {
-	margin-top:-8px;
+  color: #ebb52f;
 }
 .Percent.Custom.default {
-	color:white;
+  color: white;
 }
 .Percent.Custom.male {
-	color:#2BAEFF;
+  color: #2BAEFF;
 }
 .Percent.Custom.female {
-	color:#e02f58;
+  color: #e02f58;
 }
-
+.datumTitle {
+  margin-top: .5em;
+  margin-left: 0;
+  height: 70%;
+  text-align: right;
+  font-family: 'label';
+  width: 55%;
+  padding: 0;
+  float: left;
+}
+.datum {
+  height: 100%;
+  line-height: 100%;
+  width: 43%;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+.datum:after {
+  position: absolute;
+  content: "%";
+  font-size: .7em;
+  line-height: 2em;
+}
+.labelLine {
+  width: 100%;
+  height: 50%;
+}
 #genderbtn {
-	position:absolute;
-	top:631px;
-	left:60px;
-	font-size:12px;
+  position: absolute;
+  top: 631px;
+  left: 60px;
+  font-size: 12px;
 }
-
 #agebtn {
-	position:absolute;
-	top:633px;
-	left:280px;
-	font-size:12px;
+  position: absolute;
+  top: 633px;
+  left: 280px;
+  font-size: 12px;
 }
-
 #educationbtn {
-	position:absolute;
-	top:720px;
-	left:60px;
-	font-size:11px;
+  position: absolute;
+  top: 720px;
+  left: 60px;
+  font-size: 11px;
 }
-
 .ADA {
-	position:absolute;
-	width:89px;
-	height:77px;
-	left:935px;
-	top: 691px;
-	background-repeat:no-repeat;
-	background-image:url('../IMAGES/ada.png');
+  position: absolute;
+  width: 89px;
+  height: 77px;
+  left: 935px;
+  top: 691px;
+  background-repeat: no-repeat;
+  background-image: url('../IMAGES/ada.png');
 }
