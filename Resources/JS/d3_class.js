@@ -221,8 +221,8 @@ p.drawBase = function(){
 		var yDate = self.yScale(self.data[v].value);
 		self.date.transition().duration(60)
 			.attr("y", yDate-15)
-			.style("opacity",0)
-			.transition().duration(150).attr("x", xDate-150)
+			.style("opacity",0).attr("x", xDate-150)
+			.transition().duration(250)
 			.style("opacity",1);
 		
 		
@@ -275,7 +275,7 @@ p.drawBase = function(){
 		    	.duration(this.speed)
 				.attr("d", this.line);	
 	
-	this.date = this.chartBody.append("foreignObject")
+	this.date = this.svg.append("foreignObject")
 		.attr({
 			"width":"300px",
 			"height":"30px",

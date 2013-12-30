@@ -1,3 +1,4 @@
+/*@pink: #FF2B84;*/
 /* @pink:  #C5299B*/
 .axis path,
 .axis line {
@@ -28,7 +29,7 @@ svg .line.male {
   stroke: #2baeff;
 }
 svg .line.female {
-  stroke: #ff2b84;
+  stroke: #e02f58;
 }
 svg .line.base {
   stroke: #ffb81c;
