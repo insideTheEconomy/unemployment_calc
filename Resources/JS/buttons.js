@@ -3,7 +3,6 @@ var unButtons = function(){
 	this.$tRadio = null;
 	this.$tDiv = null;
 	this.EV = {"event":"undefined"};
-	
 }
 
 qbP = unButtons.prototype;

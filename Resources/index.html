@@ -63,22 +63,22 @@
 			</form>
 			<form>
 				<div id="educationbtn"  category = "ed" >
-					<input type="radio" _id = "1" id="ed1" name="radio" labelname = "Ed1"><label for="ed1">No Degree</label></input>
-					<input type="radio" _id = "2" id="ed2" name="radio" labelname = "Ed2"><label for="ed2">High School</label></input>
-					<input type="radio" _id = "3" id="ed3" name="radio" labelname = "Ed3"><label for="ed3">Assoc. Occupational</label></input>
-					<input type="radio" _id = "4" id="ed4" name="radio" labelname = "Ed4"><label for="ed4">Assoc. Academic</label></input>
-					<input type="radio" _id = "5" id="ed5" name="radio" labelname = "Ed5"><label for="ed5">Bachelor's</label></input>
-					<input type="radio" _id = "6" id="ed6" name="radio" labelname = "Ed6"><label for="ed6">Master's</label></input>
-					<input type="radio" _id = "7" id="ed7" name="radio" labelname = "Ed7"><label for="ed7">Ph.D</label></input>
+					<input type="radio" _id = "1" id="ed1" name="radio" labelname = "No Degree"><label for="ed1">No Degree</label></input>
+					<input type="radio" _id = "2" id="ed2" name="radio" labelname = "High School"><label for="ed2">High School</label></input>
+					<input type="radio" _id = "3" id="ed3" name="radio" labelname = "Associate Occupational"><label for="ed3">Assoc. Occupational</label></input>
+					<input type="radio" _id = "4" id="ed4" name="radio" labelname = "Associate Academic"><label for="ed4">Assoc. Academic</label></input>
+					<input type="radio" _id = "5" id="ed5" name="radio" labelname = "Bachelor's"><label for="ed5">Bachelor's</label></input>
+					<input type="radio" _id = "6" id="ed6" name="radio" labelname = "Master's"><label for="ed6">Master's</label></input>
+					<input type="radio" _id = "7" id="ed7" name="radio" labelname = "Ph.D"><label for="ed7">Ph.D</label></input>
 				</div>
 			</form>
 			<form>
 				<div id="agebtn" category = "ar" >
-					<input type="radio" _id = "1" id="ar4" name="radio" labelname = "age1"><label for="ar4">25 - 34</label></input>
-					<input type="radio" _id = "2" id="ar5" name="radio" labelname = "age2"><label for="ar5">35 - 44</label></input>
-					<input type="radio" _id = "3" id="ar6" name="radio" labelname = "age3"><label for="ar6">45 - 54</label></input>
-					<input type="radio" _id = "4" id="ar7" name="radio" labelname = "age4"><label for="ar7">55 - 64</label></input>
-					<input type="radio" _id = "5" id="ar8" name="radio" labelname = "age5"><label for="ar8">65 +</label></input>
+					<input type="radio" _id = "1" id="ar4" name="radio" labelname = "Age 25 - 34"><label for="ar4">25 - 34</label></input>
+					<input type="radio" _id = "2" id="ar5" name="radio" labelname = "Age 35 - 44"><label for="ar5">35 - 44</label></input>
+					<input type="radio" _id = "3" id="ar6" name="radio" labelname = "Age 45 - 54"><label for="ar6">45 - 54</label></input>
+					<input type="radio" _id = "4" id="ar7" name="radio" labelname = "Age 55 - 64"><label for="ar7">55 - 64</label></input>
+					<input type="radio" _id = "5" id="ar8" name="radio" labelname = "Age 65 +"><label for="ar8">65 +</label></input>
 				</div>
 			</form>
 		</div>
@@ -136,6 +136,9 @@
 				//console.log(e.ids);
 				LEV = e.labels;
 				console.log(e);
+				$(".customTitle").empty();
+				$(".customTitle").append(e.text);
+				console.log(e.text);
 			});
 	
 	//neccessary bastard function to support gender stereotypes
