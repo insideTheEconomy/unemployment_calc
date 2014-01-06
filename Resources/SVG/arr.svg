@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="arrows" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="26px" height="12px" viewBox="0 0 50 25" enable-background="new 0 0 50 25" xml:space="preserve">
+<polygon  stroke-miterlimit="10" points="2.083,12.5 22.917,2.083 22.917,22.917 "/>
+<polygon  stroke-miterlimit="10" points="47.917,12.5 27.083,22.917 27.083,2.083 "/>
+</svg>
