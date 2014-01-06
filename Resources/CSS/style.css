@@ -1,18 +1,25 @@
 /*- Style Sheet for Life Saving -*/
 @font-face {
-  font-family: 'label';
-  src: url('../FONTS/gothamrnd-book-webfont.eot');
-  src: url('../FONTS/gothamrnd-book-webfont.eot?#iefix') format('embedded-opentype'), url('../FONTS/gothamrnd-book-webfont.woff') format('woff'), url('../FONTS/gothamrnd-book-webfont.ttf') format('truetype');
+    font-family: 'label';
+    src: url('../FONTS/gothamrnd-book-webfont.svg#gotham_roundedbook') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
+
+
 @font-face {
-  font-family: 'sub-title';
-  src: url('../FONTS/gothamrnd-light-webfont.eot');
-  src: url('../FONTS/gothamrnd-light-webfont.eot?#iefix') format('embedded-opentype'), url('../FONTS/gothamrnd-light-webfont.woff') format('woff'), url('../FONTS/gothamrnd-light-webfont.ttf') format('truetype');
+    font-family: 'sub-title';
+    src: url('../FONTS/gothamrnd-light-webfont.svg#gotham_roundedlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
+
+
 @font-face {
-  font-family: 'title';
-  src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.eot');
-  src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.eot?#iefix') format('embedded-opentype'), url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.woff') format('woff'), url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.ttf') format('truetype');
+    font-family: 'title';
+    src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.svg#univers_lt_pro59ultraCn') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 /*- Overall Page Formatting -*/
 * {
@@ -223,6 +230,7 @@ body {
   height: 70%;
   text-align: right;
   font-family: 'label';
+  font-size:18px;
   width: 55%;
   padding: 0;
   float: left;
