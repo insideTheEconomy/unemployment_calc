@@ -201,7 +201,7 @@ p.drawBase = function(){
 		.remove();
 		
 	var self = this;
-	
+
 	this.sliderHandler = function(e, v){
 		
 		self.sliderValue = v;
@@ -219,12 +219,15 @@ p.drawBase = function(){
 		
 		var xDate = self.dScale(self.data[v].jsDate);
 		var yDate = self.yScale(self.data[v].value);
+		
+	
 		self.date.transition().duration(60)
 			.attr("y", yDate-15)
 			.style("opacity",0).attr("x", xDate-150)
 			.transition().duration(250)
 			.style("opacity",1);
 		
+
 		
 		$.event.trigger({
 					type: "SLIDER",
@@ -240,11 +243,13 @@ p.drawBase = function(){
 			"margin-left":this.padding.left-1
 			}).call(this.slide.value(this.sliderValue));
 			this.slide.on("slide", self.sliderHandler);
-	var handle = this.container.select(".d3-slider-handle")
+			
 	
-	handle.append("div").attr("class","arrow left");
-	handle.append("div").attr("class","arrow right");
+
 	
+//	handle.append("div").attr("class","arrow left");
+//	handle.append("div").attr("class","arrow right");
+	this.drawArr();
 	//add label
 	this.svg.append("text")
 	    .attr("class", "y label")
@@ -285,6 +290,58 @@ p.drawBase = function(){
 	this.dateBody = this.date.append("xhtml:body").attr("class","foreign")
 			    
 };
+
+p.drawArr = function(){
+	var stripPX = function(s){
+		return s.substr(0, s.length -2 );
+	}
+	var handle = this.container.select(".d3-slider-handle")
+	
+	right = stripPX(handle.style("width"));
+	vOff = stripPX(handle.style("height"))/2;
+	gutt = 2;
+	w = right/2-gutt;
+	svH = this.innerHeight + vOff;
+	hOff = this.innerHeight;
+	svgMargin = -(hOff-vOff)
+	
+	hSVG = handle.append("svg").attr({
+		width: right,
+		height: svH,
+	}).style("margin-top", svgMargin)
+
+	poly = [{"x":0, "y":hOff},
+	        {"x":w,"y":hOff-vOff},
+	        {"x":w,"y":svH}];
+
+	poly2 = [{"x":right, "y":hOff},
+	        {"x":right-w,"y":hOff-vOff},
+	        {"x":right-w,"y":svH}];
+
+	hSVG.append("polygon")
+	    .data([poly])
+	    .attr("points",function(d) { 
+	        return d.map(function(d) { return [d.x,d.y].join(","); }).join(" ");})
+	
+
+	hSVG.append("polygon")
+	    .data([poly2])
+	    .attr("points",function(d) { 
+	        return d.map(function(d) { return [d.x,d.y].join(","); }).join(" ");});
+	
+	hSVG.selectAll("polygon").attr(
+		"class", "glowy arrow"
+	);
+	
+	hSVG.append("line").attr({
+		x1: w+1, 
+		y1: hOff,
+		x2: w+1, 
+		y2: 0,
+		"class": "glowy pipe"
+	})
+	
+}
 
 
 
