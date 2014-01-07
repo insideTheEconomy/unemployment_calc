@@ -4,7 +4,7 @@
     font-family: Verdana,Arial,sans-serif;
     font-size: 1.1em;
     z-index: 2;
-	margin-top: -34px;
+	margin-top: -31px;
 
 }
 /*commented by nestor*/
@@ -13,8 +13,8 @@
 }  
 
 
-@handleW: 24px;
-@handleH: 18px;
+@handleW: 32px;
+@handleH: 16px;
 .d3-slider-handle {
 	box-sizing: border-box;
     position: absolute;
@@ -29,38 +29,20 @@
 .d3-slider-handle:hover {
     
 }
-
+@hoff : -@handleW/2;
 .d3-slider-horizontal .d3-slider-handle {
     top: -8px;
-    margin-left: -@handleW/2;
+    margin-left: (@hoff + 2);
 }
 
 
 .d3-slider-handle{
 }
 
-.d3-slider-handle:after {
-	.pipe;
-}
-@arrowW: 24px;
-@arrowH: 10px;
-@innerH: 370px;
-.pipe{
-	box-sizing: border-box;
-	content:" ";
-	width:1px;
-	position: absolute;
-	left: 12.5px;
-	top: -@innerH + @arrowH;
-	height:@innerH ;
-	background-color:white;
-	/*blahblah*/
-
-	-webkit-box-shadow: 0px 0px 10px white,0px 0px 20px white,0px 0px 30px white;
-}
 
 
-	
+
+/*	
 .arrow {
 	display: inline-block;
 	position: absolute;
@@ -122,7 +104,7 @@
 	border-left: @arrowW+4 solid fade(white, 60%);
 }
 
-/*.d3-slider-axis {
+.d3-slider-axis {
     position: relative;
     z-index: 1;    
 }

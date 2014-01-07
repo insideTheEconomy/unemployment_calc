@@ -1,5 +1,12 @@
 /*@pink: #FF2B84;*/
 /* @pink:  #C5299B*/
+.arrow {
+  stroke: #10069f;
+  fill: #2baeff;
+}
+.pipe {
+  stroke: white;
+}
 .axis path,
 .axis line {
   fill: none;
