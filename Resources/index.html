@@ -93,7 +93,26 @@
 		<div class="LabelBot Edu">Education</div>
 		<div class="LabelBot Age">Age</div>
 	</div>
-</body> 
+	<svg class ="preset">
+			<defs>
+			      <filter id="blurry"><feGaussianBlur in="SourceGraphic" stdDeviation="2"></filter>
+			    <filter id="dropshadow" height="130%">
+			    <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blurred">
+			    </feGaussianBlur>
+			    <feComponentTransfer in1 = "blurred" result="colored">
+			        <feFuncR type="linear" slope="-1" intercept="1"></feFuncR>
+			        <feFuncG type="linear" slope="-1" intercept="1"></feFuncG>
+			        <feFuncB type="linear" slope="-1" intercept="1"></feFuncB>
+			        <feFuncA type="linear" slope="1"></feFuncA>
+			    </feComponentTransfer>
+			      <feMerge> 
+			        <feMergeNode in = "colored"></feMergeNode>
+			        <feMergeNode in="SourceGraphic"></feMergeNode> 
+			      </feMerge>
+			    </filter>
+			  </defs>
+	</svg>
+
 
 <script>
 	var btns = new unButtons();  //create instance of class
@@ -157,4 +176,5 @@
 			$(".custom").toggleClass("female", (id == "2"));
 	}
 </script>
+</body> 
 </html>

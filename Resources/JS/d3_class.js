@@ -292,6 +292,7 @@ p.drawBase = function(){
 };
 
 p.drawArr = function(){
+	
 	var stripPX = function(s){
 		return s.substr(0, s.length -2 );
 	}
@@ -308,8 +309,42 @@ p.drawArr = function(){
 	hSVG = handle.append("svg").attr({
 		width: right,
 		height: svH,
+		"class": "handle"
 	}).style("margin-top", svgMargin)
+	
+/*	$p = $(".preset>defs");
+	$h = $("svg.handle");
+	$h.append($p); */
 
+	filter = hSVG.append("filter")
+	    .attr("id", "blurry");
+	
+	filter.append("feGaussianBlur")
+	    .attr("stdDeviation", 3).attr("in","SourceAlpha").attr("result","blurred")
+	
+	comTran = filter.append("feComponentTransfer").attr({
+		in1:"blurred",
+		result:"colored"
+	})
+	
+	comTran.append("feFuncR").attr({
+		type:"linear", slope:"-1", intercept:"1"
+	})
+	comTran.append("feFuncG").attr({
+		type:"linear", slope:"-1", intercept:"1"
+	})
+	comTran.append("feFuncB").attr({
+		type:"linear", slope:"-1", intercept:"1"
+	})
+	comTran.append("feFuncA").attr({
+		type:"linear", slope:"1"
+	})
+	
+	merge = filter.append("feMerge");
+		merge.append("feMergeNode").attr("in","colored");
+		merge.append("feMergeNode").attr("in","SourceGraphic");	
+	
+	
 	poly = [{"x":0, "y":hOff},
 	        {"x":w,"y":hOff-vOff},
 	        {"x":w,"y":svH}];
@@ -317,19 +352,19 @@ p.drawArr = function(){
 	poly2 = [{"x":right, "y":hOff},
 	        {"x":right-w,"y":hOff-vOff},
 	        {"x":right-w,"y":svH}];
-
-	hSVG.append("polygon")
+	hGrp = hSVG.append("g");
+	hGrp.append("polygon")
 	    .data([poly])
 	    .attr("points",function(d) { 
 	        return d.map(function(d) { return [d.x,d.y].join(","); }).join(" ");})
 	
 
-	hSVG.append("polygon")
+	hGrp.append("polygon")
 	    .data([poly2])
 	    .attr("points",function(d) { 
 	        return d.map(function(d) { return [d.x,d.y].join(","); }).join(" ");});
 	
-	hSVG.selectAll("polygon").attr(
+	hGrp.selectAll("polygon").attr(
 		"class", "glowy arrow"
 	);
 	
@@ -340,6 +375,8 @@ p.drawArr = function(){
 		y2: 0,
 		"class": "glowy pipe"
 	})
+	
+	hGrp.attr("filter", "url(#blurry)");
 	
 }
 
