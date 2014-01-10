@@ -5,8 +5,12 @@
 	fill: @lightblue;
 }
 
+.glowy{filter: url(#glow)}
+
 .pipe{
 	stroke: white;
+	fill: white;
+/*	filter: url(#fuzz);*/
 }
 
 //SVG Styling
@@ -65,15 +69,20 @@ body{
 		background-color:none;
 		width: auto;
 		height: auto;
+		color: white;
 			&.right{
 				margin-left:150px;
 			&:before{
+				
+				font-family: Impact;
 				content : "\2190";
 			}}
 			
 			&.left{
 				margin-left:0;
 			&:after{
+				
+				font-family: Impact;
 				content : "\2192";
 			}}
 	}

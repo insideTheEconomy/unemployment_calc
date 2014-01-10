@@ -95,7 +95,7 @@ p.build = function( sel ){
 	this.chartBody.append("path").attr("class"," line current");	
 //	this.svg.append("path").attr("class"," line base");
 	this.chartBody.append("path").attr("class"," line base");
-	
+	this.chartBody.append("circle").attr("class"," line base");
 
 }
 //define setter functions
@@ -116,7 +116,8 @@ Object.defineProperty(p, "baseline",{
 		}});
 
 
-p.update = function(){			
+p.update = function(){
+			
 //	this.yScale.domain( d3.extent(this.data, function(d, i) { return parseFloat(d.value) }))
 	_base = this.base;
 	this.scaleMax = 	d3.max(this.data, function(d, i) { return Math.max( +d.value, +_base[i].value ) } );
@@ -158,7 +159,6 @@ p.update = function(){
 				.transition()
 		    	.duration(this.speed)
 				.attr("d", this.line);
-	
 	this.sliderHandler(null, this.sliderValue);
 	$.event.trigger({
 				type: "SLIDER",
@@ -169,7 +169,7 @@ p.update = function(){
 };
 
 p.drawBase = function(){
-
+	this.sliderValue = this.base.length-1;
 	this.dScale.domain(d3.extent(this.base, function(d,i){
 		return d.jsDate ;
 	}))
@@ -196,9 +196,9 @@ p.drawBase = function(){
 	
 	//Update Slider
 	//console.log("Current Position : " + this.sliderValue);
-	this.slide = d3.slider().min(0).max(this.base.length-1);
-	this.container.select(".d3-slider")
-		.remove();
+	this.slide = d3.slider().min(0).max(this.base.length-1).value(this.base.length-1);
+//	this.container.select(".d3-slider")
+//		.remove();
 		
 	var self = this;
 
@@ -214,11 +214,14 @@ p.drawBase = function(){
 			else{
 				dateClass ="right";
 			}
+		console.log("dataTarget truthiness")
+		console.log(typeof self.data[self.sliderValue] == 'undefined');
+		var dataTarget = ( typeof self.data[self.sliderValue] == 'undefined' ) ? self.base : self.data;
+		console.log(dataTarget);
+		self.dateBody.html("<h1 class='"+dateClass+"'>"+dataTarget[self.sliderValue].jsDate.toLocaleDateString()+"</h1>");
 		
-		self.dateBody.html("<h1 class='"+dateClass+"'>"+self.data[self.sliderValue].jsDate.toLocaleDateString()+"</h1>");
-		
-		var xDate = self.dScale(self.data[v].jsDate);
-		var yDate = self.yScale(self.data[v].value);
+		var xDate = self.dScale(dataTarget[v].jsDate);
+		var yDate = self.yScale(dataTarget[v].value);
 		
 	
 		self.date.transition().duration(60)
@@ -241,9 +244,17 @@ p.drawBase = function(){
 		.style({
 			width:this.innerWidth, 
 			"margin-left":this.padding.left-1
-			}).call(this.slide.value(this.sliderValue));
+			}).call(this.slide.value(this.base.length-1));
 			this.slide.on("slide", self.sliderHandler);
 			
+	this.date = this.svg.append("foreignObject")
+		.attr({
+			"width":"300px",
+			"height":"30px",
+			//"x":"220","y":"220",
+			"style":"color:white"
+		})
+	this.dateBody = this.date.append("xhtml:body").attr("class","foreign");
 	
 
 	
@@ -280,14 +291,8 @@ p.drawBase = function(){
 		    	.duration(this.speed)
 				.attr("d", this.line);	
 	
-	this.date = this.svg.append("foreignObject")
-		.attr({
-			"width":"300px",
-			"height":"30px",
-			"x":"220","y":"220",
-			"style":"color:white"
-		})
-	this.dateBody = this.date.append("xhtml:body").attr("class","foreign")
+
+	
 			    
 };
 
@@ -298,29 +303,39 @@ p.drawArr = function(){
 	}
 	var handle = this.container.select(".d3-slider-handle")
 	
-	right = stripPX(handle.style("width"));
-	vOff = stripPX(handle.style("height"))/2;
+	right = +stripPX(handle.style("width"));
+	vOff = +stripPX(handle.style("height"))/2;
 	gutt = 2;
 	w = right/2-gutt;
 	svH = this.innerHeight + vOff;
 	hOff = this.innerHeight;
 	svgMargin = -(hOff-vOff)
+	var pad = 10;
+	var pad2 = 2*pad;
+	wide = right+pad2;
 	
 	hSVG = handle.append("svg").attr({
-		width: right,
-		height: svH,
-		"class": "handle"
-	}).style("margin-top", svgMargin)
+		width: wide,
+		height: svH+pad2,
+		"class": "handle",
+	}).style("margin-top", svgMargin).style("margin-left", -pad-1);
 	
 /*	$p = $(".preset>defs");
 	$h = $("svg.handle");
 	$h.append($p); */
+	fuzz = hSVG.append("filter")
+	    .attr("id", "fuzz");
+	
+	fuzz.append("feGaussianBlur")
+	    .attr("class","blurFilter").attr("stdDeviation", 5).attr("in","SourceGraphic").attr("");
 
+		
+		
 	filter = hSVG.append("filter")
-	    .attr("id", "blurry");
+	    .attr("id", "glow");
 	
 	filter.append("feGaussianBlur")
-	    .attr("stdDeviation", 3).attr("in","SourceAlpha").attr("result","blurred")
+	    .attr("class","blurFilter").attr("stdDeviation", 3).attr("in","SourceAlpha").attr("result","blurred")
 	
 	comTran = filter.append("feComponentTransfer").attr({
 		in1:"blurred",
@@ -336,27 +351,31 @@ p.drawArr = function(){
 	comTran.append("feFuncB").attr({
 		type:"linear", slope:"-1", intercept:"1"
 	})
-	comTran.append("feFuncA").attr({
+	alpha = comTran.append("feFuncA").attr({
 		type:"linear", slope:"1"
 	})
+	
+
 	
 	merge = filter.append("feMerge");
 		merge.append("feMergeNode").attr("in","colored");
 		merge.append("feMergeNode").attr("in","SourceGraphic");	
 	
 	
-	poly = [{"x":0, "y":hOff},
-	        {"x":w,"y":hOff-vOff},
-	        {"x":w,"y":svH}];
+	poly = [{"x":pad+0, "y":hOff},
+	        {"x":pad+w,"y":hOff-vOff},
+	        {"x":pad+w,"y":svH}];
 
-	poly2 = [{"x":right, "y":hOff},
-	        {"x":right-w,"y":hOff-vOff},
-	        {"x":right-w,"y":svH}];
-	hGrp = hSVG.append("g");
+	poly2 = [{"x":pad+right, "y":hOff},
+	        {"x":pad+right-w,"y":hOff-vOff},
+	        {"x":pad+right-w,"y":svH}];
+	
+	hGrp = hSVG.append("g").attr("height","200")
+	
 	hGrp.append("polygon")
 	    .data([poly])
 	    .attr("points",function(d) { 
-	        return d.map(function(d) { return [d.x,d.y].join(","); }).join(" ");})
+	        return d.map(function(d) { return [d.x,d.y].join(","); }).join(" ");});
 	
 
 	hGrp.append("polygon")
@@ -368,15 +387,22 @@ p.drawArr = function(){
 		"class", "glowy arrow"
 	);
 	
-	hSVG.append("line").attr({
-		x1: w+1, 
+/*	hSVG.append("line").attr({
+		x1: pad+w+1, 
 		y1: hOff,
-		x2: w+1, 
+		x2: pad+w+1, 
 		y2: 0,
-		"class": "glowy pipe"
+		"class": "pipe "
+	})*/
+	
+	hSVG.append("rect").attr({
+		x: pad+w+1, 
+		y: 0,
+		width:3,
+		height:svH-vOff,
+		"class": "pipe glowy"
 	})
 	
-	hGrp.attr("filter", "url(#blurry)");
 	
 }
 

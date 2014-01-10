@@ -95,7 +95,6 @@
 	</div>
 	<svg class ="preset">
 			<defs>
-			      <filter id="blurry"><feGaussianBlur in="SourceGraphic" stdDeviation="2"></filter>
 			    <filter id="dropshadow" height="130%">
 			    <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blurred">
 			    </feGaussianBlur>
@@ -109,6 +108,11 @@
 			        <feMergeNode in = "colored"></feMergeNode>
 			        <feMergeNode in="SourceGraphic"></feMergeNode> 
 			      </feMerge>
+			    </filter>
+			
+				<filter id="fuzz" height="130%">
+			    <feGaussianBlur in="SourceGraphic" stdDeviation="15" >
+			    </feGaussianBlur>
 			    </filter>
 			  </defs>
 	</svg>
