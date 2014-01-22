@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="CSS/jquery-ui-custom.css">
 <link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
+
 <script src="JS/jquery-1.9.1.js"></script>
 
 <script>
@@ -38,6 +39,11 @@
 </head>
 
 <body> 
+	
+	<div id="dialog" title="" style="display:none">
+	    </br></br>Would you like more time?
+	</div>
+	
 	<div id="TopContainer">
 		<div id="TopLeft">
 			<p><img src="IMAGES/title.png" width="449" height="92" alt="Title"></p>
@@ -108,6 +114,55 @@
 	var B;  //baseline observation  -   ""     ""
 	var curIds;
 	
+	var idleTimer;
+	var attractTimer;
+	var started = false;
+	var loopIds = {g:0,ed:0,ar:0};
+	
+	attractTimer = setInterval(attractInterval, 3000);
+	
+	$(document.body).click(function(e) {
+		userStarted();
+		started = true;
+		clearInterval(attractTimer);
+	})
+	
+	function restart() {
+		document.location.href='';
+	}
+	
+	function userStarted() {
+		clearInterval(idleTimer);
+		console.log("userStarted()");
+		idleTimer = setInterval(promptIdleUser, 120000); // 120000
+	}
+	
+	function promptIdleUser() {   
+	    clearInterval(idleTimer);
+	  	idleTimer = setInterval(restart, 10000);
+		console.log("promptIdleUser()");
+
+		$( "#dialog" ).dialog({
+			height:250,
+			width: 500,
+			modal: true,
+			resizable: false,
+			show: {
+				effect: "blind", duration: 250
+			},
+			hide: {
+				effect: "blind", duration: 250
+			},
+			buttons: {
+			  	"Yes": function()
+				{
+			    	$( this ).dialog( "close" );
+					userStarted();
+			  	}
+			}
+		}); // Shows the idle alert box.
+	}
+	
 	//create a database connection, and open it.
 	var db = new DBConnector();
 	db.open();
@@ -136,6 +191,7 @@
 			//console.log(e.ids);
 			curIds = e.ids;
 			db.queryByIds(e.ids);
+			console.log("e.ids= " + e.ids);
 		});  //add an event listener, fired each time a button is clicked.
 		var LEV;
 		$(document).on("LABEL", function(e){
@@ -155,6 +211,36 @@
 			$(".custom").toggleClass("default", (id == "0"));
 			$(".custom").toggleClass("male", (id == "1"));
 			$(".custom").toggleClass("female", (id == "2"));
+	}
+	
+	function attractInterval() {
+		if (!started) {
+			if (loopIds.g < 2) {
+				loopIds.g++;
+			} else {
+				loopIds.g = 0;
+			}
+
+			if (loopIds.ed < 6) {
+				loopIds.ed++;
+			} else {
+				loopIds.ed = 0;
+			}
+
+			if (loopIds.ar < 4) {
+				loopIds.ar++;
+			} else {
+				loopIds.ar = 0;
+			}
+
+
+			$.event.trigger({
+						type: "BUTTON",
+						ids: loopIds
+					});
+			//console.log(e.ids);
+			//db.queryByIds(e.ids);
+		}
 	}
 </script>
 </html>
