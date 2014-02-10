@@ -1,8 +1,12 @@
 	//console.log("Functions Loaded")
+	 
+	var sqlite3 = require('sqlite3').verbose();
+	//var db = new sqlite3.Database('../unemployment.db');
 
 	function DBConnector () {
 		this.rows;
 	}
+	
 	dbp = DBConnector.prototype;
 
 	dbp.dbname = "unemployment.db";
@@ -13,9 +17,7 @@
 		this.openHandler = function(e){
 			//console.log("openHandler");
 		}
-		this.folder = Ti.Filesystem.getResourcesDirectory();
-		this.dbFile = this.folder.resolve(this.dbname);
-		this.db = Ti.Database.openFile(this.dbFile);
+		this.db = new sqlite3.Database('unemployment.db');
 	}
 	
 	
@@ -42,8 +44,9 @@
 	
 	dbp.getData = function( ids ){
 		var q = "SELECT * FROM ser_data WHERE ser_data.ser_id = (SELECT series_id FROM ser_id WHERE g_id LIKE "+ids.g+" AND ed_id  LIKE "+ids.ed+" AND ar_id LIKE "+ids.ar+")"
-		this.rows = this.db.execute(q);
-		if(this.rows.rowCount() > 0){;
+		this.rows = this.db.run(q);
+		console.log("ROWS: " + this.rows);
+		if(this.rows != null){
 			ret = {}
 			ret.obs = JSON.parse(this.rows.fieldByName("observations"));
 			ret.ser = JSON.parse(this.rows.fieldByName("series"));
