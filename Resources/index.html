@@ -21,8 +21,8 @@
 	//call build on parent container
 	u.build("#d3"); 
 	buildSampleData(); //only for debugging without database class
-	u.baseline = db.baseline; //set baseline and domain/range
-	u.dataset = db.baseline; //draw data, this can happen anytime.
+	//u.baseline = db.baseline; //set baseline and domain/range
+	//u.dataset = db.baseline; //draw data, this can happen anytime.
   });
 </script>
 
@@ -178,6 +178,11 @@
 			$(".customTitle").append(EVF.series.title.slice(19));
 			
 		});
+		//Listener on database class, called when new data is available
+		$(document).on("BASELINE", function(e){
+			console.log("baseline event: ");
+			console.log(e);	
+			});
 	//listener on unChart, called when slider moves.
 	$(document).on("SLIDER", function(e){
 			EV = e;
