@@ -59,7 +59,7 @@
 		this.getData( { "g" : 0, "ed" : 0, "ar" : 0  }).then(function (d){
 			console.log("dfd-");
 			console.log(d);
-			$(self).event.trigger({
+			$.event.trigger({
 						type: "BASELINE",
 						observations: d[0].obs,
 						series: d[0].ser.seriess[0]
