@@ -56,17 +56,15 @@
 		rows = this.db.execute(q);
 		var obs = JSON.parse(rows.fieldByName("observations"));*/
 
-		this.getData( { "g" : 0, "ed" : 0, "ar" : 0  }).then(function (d){
-			console.log("dfd-");
-			console.log(d);
-			$.event.trigger({
-						type: "BASELINE",
-						observations: d[0].obs,
-						series: d[0].ser.seriess[0]
-					});
-			});
+		return this.getData( { "g" : 0, "ed" : 0, "ar" : 0  });
+			
 	}
 	
+	dbp.triggerEvent = function(o){
+		console.log("dispatching Event");
+		console.log(o);
+		$.event.trigger(o);
+	}
 	dbp.getData = function( ids ){
 		var dfd = when.defer();
 		console.log("this.db (getData)= " + this.db);
