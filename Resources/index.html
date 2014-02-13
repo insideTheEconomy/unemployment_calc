@@ -20,9 +20,21 @@
 	u = new unChart(1024,425); 
 	//call build on parent container
 	u.build("#d3"); 
-	buildSampleData(); //only for debugging without database class
+	
+	//buildSampleData(); //only for debugging without database class
+	
+	//following two lines were the previous calls to the db
+	
 	//u.baseline = db.baseline; //set baseline and domain/range
 	//u.dataset = db.baseline; //draw data, this can happen anytime.
+	
+	//henceforth, db calls return deferreds
+	
+	db.getBaseline().then(function(d){
+		u.baseline = d.observations ; 
+		u.dataset = d.observations ;
+		})
+	
   });
 </script>
 
@@ -119,7 +131,7 @@
 	var started = false;
 	var loopIds = {g:0,ed:0,ar:0};
 	
-	attractTimer = setInterval(attractInterval, 3000);
+	//attractTimer = setInterval(attractInterval, 3000);
 	
 	$(document.body).click(function(e) {
 		userStarted();
@@ -246,6 +258,6 @@
 			//console.log(e.ids);
 			//db.queryByIds(e.ids);
 		}
-	}
+	} 
 </script>
 </html>

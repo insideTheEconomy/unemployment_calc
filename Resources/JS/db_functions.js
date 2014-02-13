@@ -19,9 +19,6 @@
  
 	
 	dbp.open = function(){
-		this.openHandler = function(e){
-			//console.log("openHandler");
-		}
 		
 		var dbpath = "unemployment.db";
 		this.db = new sqlite3.Database(dbpath);
@@ -31,74 +28,43 @@
 	
 	
 	dbp.queryByIds = function(ids){
-	/*	var q = "SELECT * FROM ser_data WHERE ser_data.ser_id = (SELECT series_id FROM ser_id WHERE g_id LIKE "+ids.g+" AND ed_id  LIKE "+ids.ed+" AND ar_id LIKE "+ids.ar+")"
-		rows = this.db.execute(q);
-		var obs = JSON.parse(rows.fieldByName("observations"));*/
-
-	/*	obD = this.getData (ids);
-		if(obD){
-			$.event.trigger({
-						type: "FRED",
-						observations: obD.obs,
-						series: obD.ser.seriess[0]
-					});
-		}else{
-			$.event.trigger({
-						type: "ERROR",
-						text: "no record found in database",
-					});
-		}*/
-		
+		console.log("querying by id");
+		return this.getData(ids);	
 	}
 	
 	dbp.getBaseline = function(ids){
-	/*	var q = "SELECT * FROM ser_data WHERE ser_data.ser_id = (SELECT series_id FROM ser_id WHERE g_id LIKE "+ids.g+" AND ed_id  LIKE "+ids.ed+" AND ar_id LIKE "+ids.ar+")"
-		rows = this.db.execute(q);
-		var obs = JSON.parse(rows.fieldByName("observations"));*/
-
+		console.log("getting baseline");
 		return this.getData( { "g" : 0, "ed" : 0, "ar" : 0  });
 			
 	}
 	
-	dbp.triggerEvent = function(o){
-		console.log("dispatching Event");
-		console.log(o);
-		$.event.trigger(o);
-	}
 	dbp.getData = function( ids ){
 		var dfd = when.defer();
 		console.log("this.db (getData)= " + this.db);
 		var q = "SELECT * FROM ser_data WHERE ser_data.ser_id = (SELECT series_id FROM ser_id WHERE g_id LIKE "+ids.g+" AND ed_id  LIKE "+ids.ed+" AND ar_id LIKE "+ids.ar+")"
-		this.rows = this.db.all(q, function (err, rows) {
+		this.rows = this.db.get(q, function (err, row) {
+			var ret = {}
 			if (err) {
 				console.log("err: " + err);
 			}
 			
-			if (rows.length > 0) {
-				//cant figure out how to parse fields out of this row object
-				console.log("rows");
-				console.log(rows);
-				dfd.resolve(rows[0]);
+			if (row) {
+				obs = JSON.parse(row.observations);
+				
+				$.each(obs,function(i,v){
+								str = v.date;
+								a = str.split("-");
+								var _d = new Date(a[0],a[1],a[2]);
+								v.jsDate = _d;
+							});
+							
+				ser = JSON.parse(row.series);
+				ret.observations = obs;
+				ret.series = ser.seriess[0]
+				dfd.resolve(ret);
 			}
 		});
 		
-		/*
-		if(this.rows > 0){
-			ret = {}
-			ret.obs = JSON.parse(this.rows.fieldByName("observations"));
-			ret.ser = JSON.parse(this.rows.fieldByName("series"));
-			//console.log("ROWS :"+this.rows)
-			$.each(ret.obs,function(i,v){
-						//console.log("adding dates")
-						str = v.date;
-						a = str.split("-");
-						var _d = new Date(a[0],a[1],a[2]);
-						v.jsDate = _d;
-				});
-				return ret;
-		}else{
-			return false;
-		}*/
 		return dfd.promise;
 	}
 	
