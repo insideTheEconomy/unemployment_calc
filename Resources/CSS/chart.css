@@ -1,0 +1,99 @@
+/*@pink: #FF2B84;*/
+/* @pink:  #C5299B*/
+.arrow {
+  stroke: #10069f;
+  fill: #2baeff;
+}
+.glowy {
+  filter: url(#glow);
+}
+.pipe {
+  stroke: white;
+  fill: white;
+  /*	filter: url(#fuzz);*/
+
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+  stroke: white;
+}
+svg text {
+  font-family: "label";
+  fill: white;
+}
+.axis text {
+  font-size: 11px;
+}
+.axis text:after {
+  content: "%";
+}
+svg .line {
+  fill: none;
+  stroke-width: 3px;
+  stroke: white;
+}
+svg .line.default {
+  stroke: white;
+}
+svg .line.male {
+  stroke: #2baeff;
+}
+svg .line.female {
+  stroke: #e02f58;
+}
+svg .line.base {
+  stroke: #ffb81c;
+}
+circle {
+  fill: #2baeff;
+  stroke: grey;
+}
+body {
+  color: white;
+}
+.dateBody {
+  width: 999px;
+}
+.foreign {
+  width: auto;
+  height: auto;
+}
+.foreign h1 {
+  text-shadow: 2px 2px 2px #000000, -2px -2px 2px #000000, -2px 0 2px #000000;
+  line-height: 30px;
+  font-size: 1em;
+  font-family: "label";
+  background-color: none;
+  width: auto;
+  height: auto;
+  color: white;
+}
+.foreign h1.right {
+  margin-left: 150px;
+}
+.foreign h1.right:before {
+  font-family: Impact;
+  content: "\2190";
+}
+.foreign h1.left {
+  margin-left: 0;
+}
+.foreign h1.left:after {
+  font-family: Impact;
+  content: "\2192";
+}
+.Custom {
+  color: white;
+}
+h3.label {
+  font-size: 1.5em;
+  display: inline;
+}
+#d3 {
+  height: 425px;
+  width: 1024px;
+  background-color: rgba(0, 0, 0, 0.7);
+}

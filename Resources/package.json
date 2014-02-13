@@ -1,0 +1,18 @@
+{
+  "main": "index.html",
+  "name": "UnemploymentCalc",
+  "description": "FedCalculator",
+  "version": "0.1.0",
+  "keywords": [ "monadnock", "node-webkit" ],
+  "window": {
+    "title": "Unemployment Calculator",
+    "toolbar": true,
+    "frame": true,
+    "width": 1024,
+    "height": 768
+  },
+  "webkit": {
+    "plugin": true,
+	"java": true
+  }
+}

@@ -1,0 +1,108 @@
+@import "color.less";
+//handle svg
+.arrow{
+	stroke: @blue;
+	fill: @lightblue;
+}
+
+.glowy{filter: url(#glow)}
+
+.pipe{
+	stroke: white;
+	fill: white;
+/*	filter: url(#fuzz);*/
+}
+
+//SVG Styling
+.axis path,
+.axis line {
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+	stroke: white;
+}
+
+svg text {
+	font-family: "label";
+	fill: white;
+}
+
+.axis text{
+		font-size: 11px;
+}
+
+.axis text:after{
+	content:"%";
+}
+svg .line {
+  fill: none;
+  
+  stroke-width: 3px;
+	stroke: white;
+	&.default{stroke:white;}
+	&.male{stroke: @lightblue}
+	&.female{stroke: @pink;}
+	&.base{stroke: @yellow;}
+
+}
+
+circle{
+	fill:@lightblue;
+	stroke:grey;
+}
+body{ 
+	color: white; 
+}
+
+.dateBody{
+	width:999px;
+}
+
+.foreign {
+	width: auto;
+	height: auto;
+		& h1 {
+		text-shadow: 2px 2px  2px black, -2px -2px  2px black, -2px 0 2px black;
+		line-height:30px;
+		font-size: 1em;
+		font-family: "label";
+		background-color:none;
+		width: auto;
+		height: auto;
+		color: white;
+			&.right{
+				margin-left:150px;
+			&:before{
+				
+				font-family: Impact;
+				content : "\2190";
+			}}
+			
+			&.left{
+				margin-left:0;
+			&:after{
+				
+				font-family: Impact;
+				content : "\2192";
+			}}
+	}
+}
+
+//TEXT
+*{}
+.Custom{
+	color: white;
+}
+h3{
+	&.label{
+		font-size:1.5em;
+		display: inline;
+	}
+}
+
+//divs
+#d3{
+	height:425px;
+	width: 1024px;
+	background-color: @black;
+}
