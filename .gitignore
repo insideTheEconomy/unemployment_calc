@@ -6,3 +6,7 @@ dist/osx/Unemployment Calculator.app/Contents/Resources/index.html
 packages/*
 dist/*
 *.tmproj
+
+*.nw
+
+*.sh

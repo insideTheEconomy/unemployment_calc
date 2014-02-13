@@ -269,7 +269,7 @@ button.ui-button::-moz-focus-inner {
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-  border: 1px solid #fcefa1;
+  border: 1px solid transparent;
   background: #fbf9ee ;
   color: #363636;
 }
@@ -683,6 +683,7 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-icon-close {
   background-position: -80px -128px;
+  display:none;
 }
 .ui-icon-closethick {
   background-position: -96px -128px;
@@ -698,6 +699,15 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-icon-clipboard {
   background-position: -160px -128px;
+}
+.ui-dialog-titlebar-close {
+	display:none;
+}
+.ui-dialog-buttonset {
+	margin-left:200px;
+}
+#dialog {
+	padding-left:95px;
 }
 .ui-icon-copy {
   background-position: -176px -128px;
