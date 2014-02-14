@@ -228,19 +228,26 @@
 		});
 		
 	$(document).on("BUTTON", function(e){
-			//console.log(e.ids);
+			console.log("BUTTON");
 			curIds = e.ids;
-			db.queryByIds(e.ids);
+			//db.queryByIds(e.ids);
+		
+			db.queryByIds(curIds).then(function(d){
+				//u.baseline = d.observations ; 
+				u.dataset = d.observations ;
+				colorUpdate(curIds.g); 
+			});
 			//console.log("e.ids= " + e.ids);
 		});  //add an event listener, fired each time a button is clicked.
-		var LEV;
-		$(document).on("LABEL", function(e){
-				//console.log(e.ids);
-				LEV = e.labels;
-				console.log(e);
-				$(".datumTitle.custom").empty().append(e.text);
-				console.log(e.text);
-			});
+	var LEV;
+	$(document).on("LABEL", function(e){
+			//console.log(e.ids);
+			LEV = e.labels;
+			//console.log(e);
+			$(".datumTitle.custom").empty().append(e.text);
+			
+			//console.log(e.text);
+		});
 	
 	//neccessary bastard function to support gender stereotypes
 	var colorUpdate = function(id){
