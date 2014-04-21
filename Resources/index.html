@@ -28,7 +28,7 @@
 	//u.baseline = db.baseline; //set baseline and domain/range
 	//u.dataset = db.baseline; //draw data, this can happen anytime.
 	
-	//henceforth, db calls return deferreds
+	//henceforth, db calls return deferreds:
 	
 	db.getBaseline().then(function(d){
 		u.baseline = d.observations ; 
