@@ -21,6 +21,45 @@
     font-weight: normal;
     font-style: normal;
 }
+
+#adaBtn {
+	background: url('../IMAGES/ada2.png') no-repeat scroll top left;
+	background-size: 79px 67px;
+	width: 79px;
+	height: 67px;
+	position:absolute;
+	left:945px;
+	top:701px;
+}
+
+#adaBtn:active {
+	background: url('../IMAGES/ada.png') no-repeat scroll top left;
+	background-size: 79px 67px;
+	width: 79px;
+	height: 67px;
+	position:absolute;
+	left:945px;
+	top:701px;
+}
+
+.ui-button-text .ada {
+	color:white;
+	background-color:black;
+	font-family:"sans-serif";
+}
+
+.datumTitle .ada {
+	color:white;
+	background-color:black;
+	font-family:"sans-serif";
+}
+
+h2 .ada {
+	color:white;
+	background-color:black;
+	font-family:"sans-serif";
+}
+
 /*- Overall Page Formatting -*/
 * {
   margin: 0;

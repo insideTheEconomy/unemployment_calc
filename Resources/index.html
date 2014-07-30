@@ -52,6 +52,10 @@
 
 <body> 
 	
+	<div id="adaBtn">
+		
+	</div>
+	
 	<div id="dialog" title="" style="display:none">
 	    </br></br>Would you like more time?
 	</div>
@@ -139,6 +143,39 @@
 <script>
 	var btns = new unButtons();  //create instance of class
 	btns.build("#buttonsets"); //initialize with a selector for the wrapper div
+	// 
+	
+	var ada = false;
+	$( "#adaBtn" ).on( "click", function() {
+		console.log("ADA: ", ada);
+		if (!ada) {
+			ada = true;
+			$(".ui-button-text-only").css("font-family", "sans-serif");
+			$(".datumTitle").css("font-family", "sans-serif");
+			$("h2").css("font-family", "sans-serif");
+			$(".LabelBot").css("font-family", "sans-serif");
+			$(".LabelGender").css("font-family", "sans-serif");
+			
+			$(".ui-button-text-only").css("background-color", "black");
+			$(".datumTitle").css("background-color", "black");
+			$("h2").css("background-color", "black");
+		
+			$("#d3").css("background-color", "rgba(0,0,0,1)");
+		} else {
+			ada = false;
+			$(".ui-button-text-only").css("font-family", "label");
+			$(".datumTitle").css("font-family", "label");
+			$("h2").css("font-family", "label");
+			$(".LabelBot").css("font-family", "label");
+			$(".LabelGender").css("font-family", "label");
+			
+			$(".ui-button-text-only").css("background-color", "rgba(0,0,0,0.7)");
+			$(".datumTitle").css("background-color", "transparent");
+			$("h2").css("background-color", "transparent");
+			
+			$("#d3").css("background-color", "rgba(0,0,0,0.7)");
+		}
+	});
 </script>
 
 <script>
