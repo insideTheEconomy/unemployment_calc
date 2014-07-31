@@ -29,7 +29,8 @@
 	
 	dbp.queryByIds = function(ids){
 		console.log("querying by id");
-		return this.getData(ids);	
+		
+		return this.getData(ids);
 	}
 	
 	dbp.getBaseline = function(ids){

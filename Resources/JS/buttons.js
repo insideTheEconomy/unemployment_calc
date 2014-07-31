@@ -77,12 +77,3 @@ qbP.bind = function ( sel ){
 }
 
 
-
-
-
-
-	
-	
-
-
-

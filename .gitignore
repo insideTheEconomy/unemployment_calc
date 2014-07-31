@@ -1,6 +1,9 @@
 dist/
 .DS_STORE
 
+node_modules/
+webkitbuilds/
+
 dist/osx/Unemployment Calculator.app/Contents/Resources/index.html
 *-ck.js
 packages/*
@@ -14,3 +17,5 @@ dist/*
 *.tmproj
 
 *.nw
+
+unemploymentcalc.nw
