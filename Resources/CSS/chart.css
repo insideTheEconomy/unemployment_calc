@@ -58,6 +58,8 @@ body {
   width: 999px;
 }
 .foreign {
+  background-image: none;
+  background-color: none;
   width: auto;
   height: auto;
 }
@@ -72,14 +74,14 @@ body {
   color: white;
 }
 .foreign h1.right {
-  margin-left: 150px;
+  margin-left: 10em;
 }
 .foreign h1.right:before {
   font-family: Impact;
   content: "\2190";
 }
 .foreign h1.left {
-  margin-left: 0;
+  margin-left: 3em;
 }
 .foreign h1.left:after {
   font-family: Impact;
