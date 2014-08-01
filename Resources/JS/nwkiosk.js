@@ -12,6 +12,12 @@ var nwKiosk = function(){
 	var dataF = gui.App.dataPath;
 	this.settingsPath = dataF+"/settings.json";
 	var self = this;
+	this.goFull = function(){
+		win.enterKioskMode();
+		$("html").css("cursor","none");
+		kioskMode = true;
+		mouseHidden = true;
+	}
 	this.setup = function(){
 	//	var dfd = when.defer();
 		
@@ -26,8 +32,13 @@ var nwKiosk = function(){
 				  break;
 				case 109:
 					console.log("changemouse ")
-				  (mouseHidden) ? $("body").css("cursor","none") : $("body").css("cursor","pointer") ;
-				  mouseHidden=!mouseHidden;
+					
+					if(mouseHidden){
+						$("html").css("cursor","default");
+					}else{
+						$("html").css("cursor","none")
+					}
+				  	mouseHidden=!mouseHidden;
 				  break;
 				case 100:
 				  (devTools) ? gui.Window.get().showDevTools() : gui.Window.get().closeDevTools();
@@ -36,41 +47,10 @@ var nwKiosk = function(){
 				}
 		});
 		
-		function goFull(){
-			win.enterKioskMode();
-			$("body").css("cursor","none");
-		}
-		setInterval(goFull, 2000);
-		/*loadSettings = function(){
-			console.log("LOADING");
-			var c= require(self.settingsPath);
-			this.config = c;
-			if(!c.mouse){
-				console.log("hide mouse");
-				self.hideMouse();
-			}
-			if(c.kioskMode){
-				console.log("enter kiosk mode");
-				win.enterKioskMode();
-				kioskMode = true;
-			}
-			
-			
-			dfd.resolve(c);
-		}
-		
-		fs.exists(this.settingsPath, function(b){
-			if (!b){
-				console.log("copy settings file")
-				fs.createReadStream('settings.json').pipe(fs.createWriteStream(self.settingsPath).on("close", function(){loadSettings();}));
-			}else{
-				console.log("settings already exist");
-				loadSettings();
-			}
-		});
 		
 		
-		return dfd.promise;*/
+
+		
 	}
 	
 	this.hideMouse = function(){

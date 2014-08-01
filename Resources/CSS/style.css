@@ -1,7 +1,7 @@
 /*- Style Sheet for Life Saving -*/
 @font-face {
     font-family: 'label';
-    src: url('../FONTS/gothamrnd-book-webfont.svg#gotham_roundedbook') format('svg');
+    src: url('../FONTS/gothamrnd-book-webfont.ttf#gotham_roundedbook') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
