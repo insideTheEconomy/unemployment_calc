@@ -1,65 +1,22 @@
 /*- Style Sheet for Life Saving -*/
 @font-face {
-    font-family: 'label';
-    src: url('../FONTS/gothamrnd-book-webfont.ttf#gotham_roundedbook') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'label';
+  src: url('../FONTS/gothamrnd-book-webfont.ttf#gotham_roundedbook') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
-
-
 @font-face {
-    font-family: 'sub-title';
-    src: url('../FONTS/gothamrnd-light-webfont.svg#gotham_roundedlight') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'sub-title';
+  src: url('../FONTS/gothamrnd-light-webfont.svg#gotham_roundedlight') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-
-
 @font-face {
-    font-family: 'title';
-    src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.svg#univers_lt_pro59ultraCn') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'title';
+  src: url('../FONTS/linotype_-_universltpro-ultracondensed-webfont.svg#univers_lt_pro59ultraCn') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-
-#adaBtn {
-	background: url('../IMAGES/ada2.png') no-repeat scroll top left;
-	background-size: 79px 67px;
-	width: 79px;
-	height: 67px;
-	position:absolute;
-	left:945px;
-	top:701px;
-}
-
-#adaBtn:active {
-	background: url('../IMAGES/ada.png') no-repeat scroll top left;
-	background-size: 79px 67px;
-	width: 79px;
-	height: 67px;
-	position:absolute;
-	left:945px;
-	top:701px;
-}
-
-.ui-button-text .ada {
-	color:white;
-	background-color:black;
-	font-family:"sans-serif";
-}
-
-.datumTitle .ada {
-	color:white;
-	background-color:black;
-	font-family:"sans-serif";
-}
-
-h2 .ada {
-	color:white;
-	background-color:black;
-	font-family:"sans-serif";
-}
-
 /*- Overall Page Formatting -*/
 * {
   margin: 0;
@@ -210,10 +167,8 @@ body {
 }
 .LabelGender {
   top: 602px;
-  left: -360px;
-  position: absolute;
+  margin-left: 2em;
   height: 30px;
-  width: 50%;
   float: left;
   font-size: 26px;
   text-align: right;
@@ -241,7 +196,7 @@ body {
   left: 63px;
 }
 .LabelBot.Age {
-  top: 602px;
+  top: 598px;
   left: 280px;
 }
 .Percent {
@@ -269,7 +224,6 @@ body {
   height: 70%;
   text-align: right;
   font-family: 'label';
-  font-size:18px;
   width: 55%;
   padding: 0;
   float: left;
