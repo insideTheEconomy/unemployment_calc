@@ -36,6 +36,14 @@
 		})
 	
   });
+
+  	var keyDownSnd = document.createElement('audio');
+	keyDownSnd.setAttribute('src', 'SOUND/d_click.ogg');
+	keyDownSnd.load();
+
+	var keyUpSnd = document.createElement('audio');
+	keyUpSnd.setAttribute('src', 'SOUND/u_click.ogg');
+	keyUpSnd.load();
 </script>
 
 <script src="JS/jquery-ui.js"></script>
@@ -148,6 +156,7 @@
 	
 	var ada = false;
 	$( "#adaBtn" ).on( "click", function() {
+		keyDownSnd.play();
 		console.log("ADA: ", ada);
 		if (!ada) {
 			ada = true;
@@ -267,6 +276,7 @@
 		
 	$(document).on("BUTTON", function(e){
 			console.log("BUTTON");
+			keyDownSnd.play();
 			curIds = e.ids;
 			//db.queryByIds(e.ids);
 		
@@ -327,6 +337,14 @@
 			//db.queryByIds(e.ids);
 		}
 	} 
+	
+	$( ".ui-slider-handle" ).mousedown(function() {
+	  keyDownSnd.play();
+	});
+	
+	$( ".ui-slider-handle" ).mouseup(function() {
+	  keyUpSnd.play();
+	});
 </script>
 </body> 
 </html>
