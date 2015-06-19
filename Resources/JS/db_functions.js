@@ -20,7 +20,7 @@
 	
 	dbp.open = function(){
 		
-		var dbpath = "unemployment.db";
+		var dbpath = process.env.HOME + "/exhibit/unemployment.db";
 		this.db = new sqlite3.Database(dbpath);
 		console.log("this.db (open)= " + this.db);
 		
